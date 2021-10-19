@@ -1,0 +1,90 @@
+/*General html*/
+html {
+	height: 100%;
+}
+
+body {
+	background: slategrey;
+	size: cover;
+	font-family: 'Heebo';
+}
+
+img {
+	padding: 5%;	
+	width: 40%;
+	height: 20%;
+	border-radius: 10px;
+} 
+
+h2 {
+	text-align: left;
+}
+/*The main container class*/
+.mainContain {
+
+	background: linear-gradient(to bottom right, 
+		rgba(140, 60, 70, .5), 
+		rgba(51, 119, 136, .5));
+
+	border-radius: 5px;
+	margin: auto;
+	margin-top: 2.1%;
+	width: 93%;
+	height: 90%;
+
+	text-align: center;
+	transition: .7s;
+	box-shadow: 0 50px 50px rgba(25, 25, 25, .5);
+}
+
+.mainContain h1 {
+	opacity: .7;
+	color: white;
+	font-weight: 800;
+	font-size: 6em;
+	padding-top: 20%;
+}
+
+.mainContain h4 {
+	text-align: left;
+	padding-left: 2%;
+	padding-right: 50%;
+}
+
+.mainContain a {
+	color: white;
+	text-decoration: none;
+	transition: 0.5s;
+	border-bottom: 2px solid rgba(0, 0, 0, 0);
+	
+}
+
+.mainContain a:hover {
+	cursor: pointer;
+	opacity: 0.5;
+}
+
+.mainContain p {
+	padding-top: 0%;
+	opacity: 1;
+}
+
+.mainContain h3 {
+	padding-bottom: 25%;
+	letter-spacing: 3px;
+	color: white;
+}
+/*the 'main' id
+  styles central div */
+#main h1 {
+	opacity: .7;
+	color: black;
+	font-weight: 400;
+	font-size: 5em;
+	padding-top: 20%;
+}
+
+#main:hover {
+	width: 95%;
+	box-shadow: 0 50px 50px rgba(25, 25, 25, .5);
+}

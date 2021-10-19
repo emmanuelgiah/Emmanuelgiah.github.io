@@ -1,0 +1,71 @@
+/*General html*/
+html {
+	height: 100%;
+}
+
+body {
+	background: black;
+	size: cover;
+	font-family: 'Heebo';
+}
+/*The main container class*/
+.mainContain {
+
+	background: linear-gradient(to bottom right, 
+		rgba(140, 60, 70, .8), 
+		rgba(51, 119, 136, .8));
+
+	border-radius: 5px;
+	margin: auto;
+	margin-top: 2.1%;
+	width: 96%;
+	height: 90%;
+
+	text-align: center;
+	transition: .7s;
+	box-shadow: 0 50px 50px rgba(25, 25, 25, .5);
+}
+
+.mainContain h1 {
+	opacity: .9;
+	color: white;
+	font-weight: 400;
+	font-size: 6em;
+	padding-top: 20%;
+}
+
+.mainContain a {
+	opacity: .9;
+	color: white;
+	text-decoration: none;
+	transition: 0.5s;
+	border-bottom: 2px solid rgba(0, 0, 0, 0);
+	letter-spacing: 10px;
+	
+}
+
+.mainContain a:hover {
+	cursor: pointer;
+	opacity: .5;
+}
+
+.mainContain h3 {
+	opacity: 0.9;
+	padding-bottom: 20%;
+	letter-spacing: 5px;
+	color: white;
+}
+/*the 'main' id
+  styles central div */
+#main h1 {
+	color: white;
+	font-weight: 400;
+	font-size: 4em;
+	padding-top: 20%;
+}
+
+#main:hover {
+	width: 98%;
+	box-shadow: 0 50px 50px rgba(25, 25, 25, .5);
+
+}
