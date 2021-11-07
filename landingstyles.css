@@ -18,7 +18,7 @@ body {
 	border-radius: 5px;
 	margin: auto;
 	margin-top: 2.1%;
-	width: 96%;
+	width: 95%;
 	height: 90%;
 
 	text-align: center;
@@ -48,7 +48,7 @@ body {
 }
 
 .mainContain h3 {
-	opacity: 0.8;
+	opacity: 0.6;
 	padding-bottom: 18%;
 	color: white;
 }

@@ -1,0 +1,39 @@
+/*General html*/
+html {
+	height: 100%;
+}
+
+body {
+	background: black;
+	size: cover;
+	font-family: 'Heebo';
+}
+/*banner text styles*/
+.banner-text {
+    color: white;
+    opacity: 0.9;
+    font-size: 2em;
+}
+
+.banner-text a {
+    opacity: .3;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.banner-text a:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+/*navbar line break styles*/
+.line-break {
+    width: 100%;
+    height: 5%;
+    color: white;
+    opacity: 0.9;
+    outline: solid 1px; 
+    margin-left: 2%;
+    margin-top: -1.5%;
+}
