@@ -35,5 +35,24 @@ body {
     opacity: 0.9;
     outline: solid 1px; 
     margin-left: 2%;
-    margin-top: -1.5%;
+    margin-top: 1%;
+}
+
+/*Resume Page Styles */
+
+.resume-container {
+    margin-top: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+
+}
+
+.resume-container img {
+    display: block;
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+
+    border-radius: 5px;
 }
