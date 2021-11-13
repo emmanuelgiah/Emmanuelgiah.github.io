@@ -11,11 +11,12 @@ body {
 /*banner text styles*/
 .banner-text {
     color: white;
-    opacity: 0.9;
+    opacity: 1;
     font-size: 2em;
 }
 
 .banner-text a {
+    margin-left: 1%;
     opacity: .3;
     color: white;
     text-decoration: none;
@@ -40,7 +41,7 @@ body {
 
 /*Resume Page Styles */
 .resume-container {
-    margin-top: 1%;
+    margin-top: 3%;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
@@ -54,6 +55,33 @@ body {
     border-radius: 5px;
 
     animation: fadein 1s;
+}
+
+/*About Me Page Styles */
+.about-me-container {
+    margin-top: 2%;
+    margin-left: 5%;
+    margin-right: auto;
+    width: 75%;
+}
+
+.about-me-container img {
+    display: inline;
+    margin-right: auto;
+    border-radius: 5px;
+
+    margin-top: 2%;
+    width: 30%;
+    animation: fadein 1s;
+}
+
+.about-me-container h3{
+    color: white;
+    opacity: 1;
+    size: 3em;
+    display: inline;
+    
+    margin-left: 5%;
 }
 
 /*Add fade in animations */
