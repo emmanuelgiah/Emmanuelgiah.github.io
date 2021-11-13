@@ -62,27 +62,46 @@ body {
     margin-top: 2%;
     margin-left: 5%;
     margin-right: auto;
-    width: 75%;
+    width: 80%;
+    height: 100%;
 }
 
-.about-me-container img {
+.about-me-container-img {
     display: inline;
     margin-right: auto;
-    border-radius: 5px;
+    width: 40%;
+}
 
+.about-me-container-img img {
+    margin-bottom: 2%;
+    border-radius: 5px;
     margin-top: 2%;
     width: 30%;
     animation: fadein 1s;
 }
 
-.about-me-container h3{
+.about-me-container-text {
+    display: inline-block;
+    margin-left: 5%;
+    width: 40%;
+    height: 500px;
+}
+.about-me-container-text h1 {
+    display: inline;
+    color: white;
+    opacity: 0.3;
+    size: 6em;
+
+    margin-left: 1%;
+}
+.about-me-container-text h3 {
     color: white;
     opacity: 1;
-    size: 3em;
-    display: inline;
-    
-    margin-left: 5%;
+    size: 6em;
+    margin-left: 1%;
+    line-height: 1.3;
 }
+
 
 /*Add fade in animations */
 @-webkit-keyframes fadein {
