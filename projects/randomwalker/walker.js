@@ -22,14 +22,15 @@ function draw() {
 	var newy = starty + disty;
 
 	if (newx > 0 && newx < width && newy > 0 && newy < height) {
+		strokeWeight(2);
 		stroke(255, 255, 255, 100);
 		line(startx, starty, newx, newy);
 		startx = newx;
 		starty = newy;
 	} else {
-		strokeWeight(5);
-		stroke(0, 0, 255);
-		var trailLength = 20;
+		strokeWeight(4);
+		stroke(255, 0, 0);
+		var trailLength = 40;
 		
 		for (var i = 0; i < points.length-trailLength; i+=trailLength) {
 			var trax = points[i][0];

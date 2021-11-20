@@ -17,7 +17,7 @@ body {
 
 	border-radius: 5px;
 	margin: auto;
-	margin-top: 2.1%;
+	margin-top: 2%;
 	width: 95%;
 	height: 90%;
 
@@ -68,4 +68,36 @@ body {
 #main:hover {
 	width: 98%;
 	box-shadow: 0 50px 50px rgba(25, 25, 25, .5);
+}
+/*banner text styles*/
+.banner-text {
+    color: white;
+    opacity: 1;
+    font-size: 2em;
+	margin-left: 1%;
+}
+
+.banner-text a {
+    margin-left: 1%;
+    opacity: .3;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.banner-text a:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+/*Add fade in animations */
+@-webkit-keyframes fadein {
+    from { 
+        opacity: 0; 
+        margin-top: 6%;
+    }
+
+    to   { 
+        opacity: 1;
+        margin-top: 2%;
+    }
 }
