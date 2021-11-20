@@ -6,12 +6,12 @@ var badguys = [];
 var particles = [];
 var totalBadguys = 10;
 //sounds
-var enemyImpact;
-var firing;
+/*var enemyImpact;
+var firing;*/
 
 function setup() {
-	enemyImpact = loadSound('sounds/shortImpact.wav');
-	firing = loadSound('sounds/fire.wav');
+	/*enemyImpact = loadSound('sounds/shortImpact.wav');
+	firing = loadSound('sounds/fire.wav');*/
 	cnv = createCanvas(windowWidth-100, windowHeight-100);
 	cnv.position(50, 50);
 	h = new hero();
@@ -93,7 +93,7 @@ function draw() {
 				}
 				bullets.splice(i, 1);
 				badguys.splice(q, 1);
-				enemyImpact.play();
+				/*enemyImpact.play();*/
 				dis = 0;
 			}
 		}
@@ -134,7 +134,7 @@ function keyReleased() {
 	//firing
 	if (keyCode === 32 || keyCode === UP_ARROW) {
 		bullets.push(new bullet(h.x2, h.y2));
-		firing.play();
+		/*firing.play();*/
 	}
 }
 

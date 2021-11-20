@@ -12,8 +12,8 @@ body {
 .mainContain {
 
 	background: linear-gradient(to bottom right, 
-		rgba(140, 60, 70, .8), 
-		rgba(51, 119, 136, .8));
+		rgba(140, 60, 70, .5), 
+		rgba(51, 119, 136, .5));
 
 	border-radius: 5px;
 	margin: auto;
@@ -36,7 +36,7 @@ body {
 }
 
 .mainContain a {
-	opacity: .2;
+	opacity: .4;
 	color: white;
 	text-decoration: none;
 	transition: 0.5s;

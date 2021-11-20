@@ -1,0 +1,21 @@
+html {
+	height: 100%
+}
+
+body {
+	background: black;
+}
+
+#speed {
+	opacity: 0.1;
+	transition: opacity 1s;
+
+	position: fixed;
+	top: 95%;
+	right: 1%;
+}
+
+#speed:hover {
+	cursor: pointer;
+	opacity: 0.3;
+}
