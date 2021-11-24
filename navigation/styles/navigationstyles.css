@@ -124,23 +124,22 @@ body {
 
 /*About Me Page Styles */
 .about-me-container {
-    margin-top: 2%;
+    margin-top: 3%;
     margin-left: 5%;
     margin-right: auto;
     width: 80%;
     height: 100%;
-    animation: slidein 1s;
+    animation: fadein 1s;
 }
 
 .about-me-container-img {
-    display: inline;
-    margin-right: auto;
-    width: 40%;
+    display: inline-block;
+    width: 30%;
 }
 
 .about-me-container-img img {
     border-radius: 5px;
-    width: 30%;
+    width: 100%;
 }
 
 .about-me-container-text {

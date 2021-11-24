@@ -16,8 +16,8 @@ function setup() {
 	particles = [];
 
 	translate(windowWidth/2, windowHeight/2);
-	for (let i = 0; i < 100; i++) {
-		particles.push(new particle(width/2, height/2, 10))
+	for (let i = 0; i < 50; i++) {
+		particles.push(new particle(windowWidth/2, windowHeight/2, 10))
 	}
 
 	r = rcolorScale;
@@ -65,7 +65,6 @@ function windowResized() {
 }
 
 function mouseWheel(event) {
-	console.log("Hello");
 	for (let i = 0; i < particles.length; i++) {
 		particles[i].xdistance += (event.delta/25);
 		particles[i].ydistance += (event.delta/25);
@@ -97,5 +96,4 @@ function mousePressed() {
 			}
 		}
 	}
-	console.log("hasExploded");
 }
