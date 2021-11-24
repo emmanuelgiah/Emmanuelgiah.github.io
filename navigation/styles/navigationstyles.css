@@ -27,11 +27,7 @@ body {
 	box-shadow: 0 50px 50px rgba(25, 25, 25, .5);
 	letter-spacing: 5px;
 
-<<<<<<< HEAD
-    animation: fadein 1s;
-=======
     animation: slidein 1s;
->>>>>>> projectpage-overhaul
 }
 
 .mainContain h1 {
