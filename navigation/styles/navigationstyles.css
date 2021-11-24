@@ -26,6 +26,8 @@ body {
 	transition: .7s;
 	box-shadow: 0 50px 50px rgba(25, 25, 25, .5);
 	letter-spacing: 5px;
+
+    animation: slidein 1s;
 }
 
 .mainContain h1 {
