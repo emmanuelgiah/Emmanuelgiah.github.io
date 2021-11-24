@@ -119,7 +119,7 @@ body {
     margin-right: auto;
     border-radius: 5px;
 
-    animation: fadein 1s;
+    animation: slidein 1s;
 }
 
 /*About Me Page Styles */
@@ -129,6 +129,7 @@ body {
     margin-right: auto;
     width: 80%;
     height: 100%;
+    animation: slidein 1s;
 }
 
 .about-me-container-img {
@@ -138,11 +139,8 @@ body {
 }
 
 .about-me-container-img img {
-    margin-bottom: 2%;
     border-radius: 5px;
-    margin-top: 2%;
     width: 30%;
-    animation: fadein 1s;
 }
 
 .about-me-container-text {
@@ -168,7 +166,7 @@ body {
 }
 
 /*Add fade in animations */
-@-webkit-keyframes fadein {
+@-webkit-keyframes slidein {
     from { 
         opacity: 0; 
         margin-top: 6%;
@@ -177,5 +175,16 @@ body {
     to   { 
         opacity: 1;
         margin-top: 2%;
+    }
+}
+
+/*Add fade in animations */
+@-webkit-keyframes fadein {
+    from { 
+        opacity: 0; 
+    }
+
+    to   { 
+        opacity: 1;
     }
 }
