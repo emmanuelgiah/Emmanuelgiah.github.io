@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="icon" href="icon.svg">
+        <title>wsdm.</title>
+        <!--Font Smoothing-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="./styles.css">
+        <!--Import Fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
+        <!--Include JQuery-->
+        <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
+    </head>
+    <body class="bg-gray-500 text-gray-100">
+        <header class="flex justify-center mt-5 fade-animation">
+            <div>
+                <h1 class="text-3xl"> wsdm.</h1>
+            </div>
+        </header>
+        <!--This Section Displays The Quote-->
+        <section class="block items-center mt-48 mx-96 fade-animation">
+            <div class="flex space-x-4 justify-center mb-2" style="max-width: 600px;">
+                <h2 id="quotePlaceHolder" class="text-2xl"></h2>
+                <h3 id="authorPlaceHolder" class="text-md text-gray-300"></h3>
+            </div>
+            <a id="authorQuery" href="#" class="opacity-20" target="_blank"> Learn More </a>
+        </section>
+        <!--This Section Displays The Speaker Information-->
+        <section>
+            
+        </section>
+        <script src="quote.js"></script>
+        <script src="wsdm.js"></script>
+    </body>
+</html>

@@ -1,0 +1,23 @@
+body {
+    font-family: 'Lato', sans-serif;
+    font-family: 'Nanum Myeongjo', serif;
+}
+
+.fade-animation  {
+    animation: fadein 2s;
+}
+
+#authorQuery:hover {
+
+}
+
+/*Add fade in animations */
+@-webkit-keyframes fadein {
+    from { 
+        opacity: 0;
+    }
+
+    to   { 
+        opacity: 1;
+    }
+}
