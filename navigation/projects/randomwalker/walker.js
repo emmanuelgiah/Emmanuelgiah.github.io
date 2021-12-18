@@ -31,7 +31,7 @@ function draw() {
 		starty = newy;
 	} else {
 		background(0)
-		var trailLength = Math.floor(points.length/40);
+		var trailLength = Math.floor(points.length/30);
 		let red = Math.floor(Math.random() * 100);
 		let green = Math.floor(Math.random() * 100);
 		for (var i = 0; i < points.length; i+=trailLength) {
