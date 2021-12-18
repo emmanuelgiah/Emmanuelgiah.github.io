@@ -9,7 +9,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
 	background: black;
 	size: cover;
-	font-family: 'Lato', sans-serif;
+	font-family: 'Heebo', sans-serif;
 	font-weight: 100;
 }
 /*The main container class*/
@@ -36,7 +36,7 @@ body {
 .mainContain a {
 	color: white;
 	text-decoration: none;
-	opacity: 0.2;
+	opacity: 0.4;
 	transition: 0.5s;
 	border-bottom: 2px solid rgba(0, 0, 0, 0);
 }
@@ -46,7 +46,7 @@ body {
 }
 
 .mainContain h3 {
-	opacity: 0.6;
+	opacity: 0.8;
 	padding-bottom: 18%;
 	color: white;
 }
