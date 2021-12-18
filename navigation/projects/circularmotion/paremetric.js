@@ -26,10 +26,10 @@ function setup() {
 	y2 = 0;
 
 	inside1 = Math.random() * 20;
-	scale1 = (Math.random() * 200) + 100;
+	scale1 = (Math.random() * 150) + 50;
 
 	inside2 = Math.random() * 20;
-	scale2 = (Math.random() * 200) + 100;
+	scale2 = (Math.random() * 150) + 50;
 
 	r = rcolorScale;
 	g = gcolorScale;
@@ -47,7 +47,7 @@ function draw() {
 	translate(windowWidth/2, windowHeight/2);
 	stroke(b, 25, 25);
 	strokeWeight(10);
-	for (var i = 2; i < 33; i += 3) {
+	for (var i = 2; i < 20; i += 2) {
 		r *= i;
 		g *= i;
 		b *= i;

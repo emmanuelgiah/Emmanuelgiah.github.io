@@ -6,16 +6,34 @@ body {
     font-family: 'Nanum Myeongjo', serif;
 }
 
-.fade-animation  {
-    animation: fadein 2s;
+.fade-slide-animation  {
+    animation: fadeslide 3s;
+}
+
+.fade-animation {
+    animation: fade 3s;
 }
 
 #authorQuery {
     opacity: 0.2;
+    transition: 0.5s;
+    border-bottom: none;
 }
 
 #authorQuery:hover {
     opacity: .5;
+    border-bottom: solid white 1px;
+}
+
+#twitterlink {
+    opacity: .2;
+    transition: 0.5s;
+    border-bottom: none;
+}
+
+#twitterlink:hover {
+    opacity: .5;
+    border-bottom: solid white 1px;
 }
 
 .mw-300 {
@@ -30,7 +48,7 @@ body {
 
 
 /*Add fade in animations */
-@-webkit-keyframes fadein {
+@-webkit-keyframes fadeslide {
     from { 
         opacity: 0;
         margin-top: 3%;
@@ -39,5 +57,16 @@ body {
     to   { 
         opacity: 1;
         margin-top: none;
+    }
+}
+
+/*Add fade in animations */
+@-webkit-keyframes fade {
+    from { 
+        opacity: 0;
+    }
+
+    to   { 
+        opacity: 1;
     }
 }
