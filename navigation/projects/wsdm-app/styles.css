@@ -11,6 +11,17 @@ body {
 
 }
 
+.mw-300 {
+    max-width: 300px;
+}
+
+@media (min-width: 540px) {
+    .sm\:mw-540 {
+        max-width: 540px;
+    }
+}
+
+
 /*Add fade in animations */
 @-webkit-keyframes fadein {
     from { 
