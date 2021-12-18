@@ -7,11 +7,12 @@ var lineStrokeB;
 var points = new Array();
 
 function setup() {
-	createCanvas(windowWidth, windowHeight);
+	createCanvas(windowWidth-10, windowHeight-20);
 	startx = width/2;
 	starty = height/2;
 	lineStrokeA = random(100);
 	lineStrokeB = random(100);
+	
 	speed = document.querySelector("input").value;
 }
 
