@@ -2,15 +2,17 @@ var startx = 0;
 var starty = 0;
 var speed;
 var speedSlider;
-
+var lineStrokeA;
+var lineStrokeB;
 var points = new Array();
 
 function setup() {
-	createCanvas(windowWidth-20, windowHeight-20);
+	createCanvas(windowWidth, windowHeight);
 	startx = width/2;
 	starty = height/2;
+	lineStrokeA = random(100);
+	lineStrokeB = random(100);
 	speed = document.querySelector("input").value;
-	background(0);
 }
 
 function draw() {
@@ -28,24 +30,37 @@ function draw() {
 		startx = newx;
 		starty = newy;
 	} else {
-		strokeWeight(4);
-		stroke(255, 0, 0);
-		var trailLength = 40;
-		
-		for (var i = 0; i < points.length-trailLength; i+=trailLength) {
+		background(0)
+		var trailLength = Math.floor(points.length/40);
+		let red = Math.floor(Math.random() * 100);
+		let green = Math.floor(Math.random() * 100);
+		for (var i = 0; i < points.length; i+=trailLength) {
 			var trax = points[i][0];
 			var tray = points[i][1];
 
 			var newtrax = points[i+trailLength][0];
 			var newtray = points[i+trailLength][1];
 
-			line(trax, tray, newtrax, newtray);
+			gradientLine(trax, tray, newtrax, newtray, color(red+i, green, lineStrokeA), color(red+i, green, lineStrokeB), 5);
 		}
 
 		noLoop();
 	}
 
 	points.push([newx, newy]);
+}
+
+function gradientLine(x1, y1, x2, y2, c1, c2, sz) {
+	const d = dist(x1, y1, x2, y2)
+	for (let i = 0; i < d; i++) {
+	  const step = map(i, 0, d, 0, 1)
+	  const x = lerp(x1, x2, step)
+	  const y = lerp(y1, y2, step)
+	  const c = lerpColor(c1, c2, step)
+	  fill(c)
+	  noStroke()
+	  ellipse(x, y, sz, sz)
+	}
 }
 
 function windowResized() {

@@ -19,7 +19,7 @@ let g;
 let b;
 
 function setup() {
-	createCanvas(windowWidth - 19.5001, windowHeight - 19.5001);
+	createCanvas(windowWidth, windowHeight);
 	x1 = 0;
 	x2 = 0;
 	y1 = 0;
@@ -35,12 +35,12 @@ function setup() {
 	g = gcolorScale;
 	b = bcolorScale;
 
-	document.body.style.background = "rgba(" + r + ", " + g + ", " + b + ", .9)";
+	document.body.style.background = "rgba(" + r + ", " + g + ", " + b + ", 1)";
 }
 
 function draw() {
 	translate(0, 0);
-	fill("rgba(" + r + ", " + g + ", " + b + ", .9)");
+	fill("rgba(" + r + ", " + g + ", " + b + ", 1)");
 	noStroke();
 	rect(0, 0, windowWidth - 19.5001, windowHeight - 19.5001);
 	

@@ -12,7 +12,7 @@ let ypolosionfactor = 0;
 let hasExploded = false;
 
 function setup() {
-	createCanvas(windowWidth-19.500008, windowHeight-19.50008);
+	createCanvas(windowWidth, windowHeight);
 	particles = [];
 
 	translate(windowWidth/2, windowHeight/2);
@@ -24,20 +24,20 @@ function setup() {
 	g = gcolorScale;
 	b = bcolorScale;
 
-	document.body.style.background = "rgba(" + r + ", " + g + ", " + b + ", .9)";
+	document.body.style.background = "rgba(" + r + ", " + g + ", " + b + ", 1)";
 }
 
 function draw() {
 	noStroke();
-	fill("rgba(" + r + ", " + g + ", " + b + ", .9)");
+	fill("rgba(" + r + ", " + g + ", " + b + ", 1)");
 	rect(0, 0, window.width-1, window.height-1);
 	fill("rgba(" + r + ", " + g + ", " + b + ", .5)");
 	//corner check
 	for (var i = 0; i < particles.length; i++) {
 		//checks if in orbit
-		if ((particles[i].x < 0-10) ||
+		if ((particles[i].x < 0) ||
 			(particles[i].x > width+10) ||
-			(particles[i].y < 0-10) ||
+			(particles[i].y < 0) ||
 			(particles[i].y > height+10)) {
 			particles[i].exploding = false;
 			particles[i].searching = true;
