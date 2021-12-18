@@ -4,7 +4,7 @@ body {
 }
 
 .fade-animation  {
-    animation: fadein 2s;
+    animation: fadein 3s;
 }
 
 #authorQuery:hover {
@@ -15,9 +15,11 @@ body {
 @-webkit-keyframes fadein {
     from { 
         opacity: 0;
+        margin-top: 10%;
     }
 
     to   { 
         opacity: 1;
+        margin-top: none;
     }
 }
