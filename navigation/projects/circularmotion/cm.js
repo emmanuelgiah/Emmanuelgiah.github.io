@@ -12,7 +12,7 @@ let ypolosionfactor = 0;
 let hasExploded = false;
 
 function setup() {
-	createCanvas(windowWidth, windowHeight);
+	createCanvas(windowWidth-10, windowHeight-20);
 	particles = [];
 
 	translate(windowWidth/2, windowHeight/2);
@@ -30,7 +30,7 @@ function setup() {
 function draw() {
 	noStroke();
 	fill("rgba(" + r + ", " + g + ", " + b + ", 1)");
-	rect(0, 0, window.width-1, window.height-1);
+	rect(0, 0, window.width, window.height);
 	fill("rgba(" + r + ", " + g + ", " + b + ", .5)");
 	//corner check
 	for (var i = 0; i < particles.length; i++) {
@@ -74,6 +74,7 @@ function mouseWheel(event) {
 function mousePressed() {
 	//explosion check
 	if (mouseButton == LEFT) {
+		
 		for (var i = 0; i < particles.length; i++) {
 			if (particles[i].exploding == true) {
 				particles[i].exploding = false;

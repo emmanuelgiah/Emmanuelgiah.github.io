@@ -19,7 +19,7 @@ let g;
 let b;
 
 function setup() {
-	createCanvas(windowWidth, windowHeight);
+	createCanvas(windowWidth-20, windowHeight-20);
 	x1 = 0;
 	x2 = 0;
 	y1 = 0;
