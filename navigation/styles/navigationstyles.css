@@ -4,11 +4,14 @@ html {
 }
 
 body {
+    /*sauce*/
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 	background: black;
 	size: cover;
-	font-family: 'Heebo';
+	font-family: 'Heebo', sans-serif;
+	font-weight: 100;
 }
-/*Project Container*/
 /*The main container class*/
 .mainContain {
 
@@ -16,32 +19,24 @@ body {
 		rgba(75, 60, 70, .5), 
 		rgba(51, 119, 136, .5));
 
-	border-radius: 5px;
-	margin: auto;
-	margin-top: 2.1%;
-	width: 95%;
-	height: 90%;
-
+	border-radius: 2px;
 	text-align: center;
 	transition: .7s;
-	box-shadow: 0 50px 50px rgba(25, 25, 25, .5);
 	letter-spacing: 5px;
 
-    animation: slidein 1s;
+	animation: fadein 1s;
 }
 
 .mainContain h1 {
 	opacity: 1;
 	color: white;
-	font-weight: 400;
-	font-size: 6em;
 	margin-top: -8%;
 }
 
 .mainContain a {
-	opacity: .4;
 	color: white;
 	text-decoration: none;
+	opacity: 0.2;
 	transition: 0.5s;
 	border-bottom: 2px solid rgba(0, 0, 0, 0);
 }
@@ -61,23 +56,16 @@ body {
 }
 /*the 'main' id
   styles central div */
-#project h1 {
+#main h1 {
 	color: white;
 	font-weight: 400;
-	font-size: 4em;
 	padding-top: 20%;
 }
-
-#project:hover {
-	width: 98%;
-	box-shadow: 0 50px 50px rgba(25, 25, 25, .5);
-}
-
 /*banner text styles*/
 .banner-text {
     color: white;
     opacity: 1;
-    font-size: 2em;
+	margin-left: 1%;
 }
 
 .banner-text a {
@@ -93,33 +81,10 @@ body {
     cursor: pointer;
 }
 
-/*navbar line break styles*/
-.line-break {
-    width: 100%;
-    height: 5%;
-    color: white;
-    opacity: 0.9;
-    outline: solid 1px; 
-    margin-left: 2%;
-    margin-top: 1%;
-}
-
 /*Resume Page Styles */
-.resume-container {
-    margin-top: 1%;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-
-}
 
 .resume-container img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 5px;
-
-    animation: slidein 1s;
+    animation: fadein 1s;
 }
 
 /*About Me Page Styles */
@@ -129,7 +94,7 @@ body {
     margin-right: auto;
     width: 80%;
     height: 100%;
-    animation: fadein 2s;
+    animation: fadein 1s;
 }
 
 .about-me-container img {
@@ -149,31 +114,14 @@ body {
     display: inline;
     color: white;
     opacity: 0.3;
-    size: 6em;
-
     margin-left: 1%;
 }
 .about-me-container-text h3 {
     color: white;
     opacity: 1;
-    size: 6em;
     margin-left: 1%;
     line-height: 1.3;
 }
-
-/*Add fade in animations */
-@-webkit-keyframes slidein {
-    from { 
-        opacity: 0; 
-        margin-top: 6%;
-    }
-
-    to   { 
-        opacity: 1;
-        margin-top: 2%;
-    }
-}
-
 
 /*Add fade in animations */
 @-webkit-keyframes fadein {
