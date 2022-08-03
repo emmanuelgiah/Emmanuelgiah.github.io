@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="icon" href="./icon.svg">
+        <title>mstry.</title>
+        <!--Font Smoothing-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="./styles.css">
+        <!--Import Fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css?family=Heebo:100" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
+    </head>
+    <body class="bg-gray-800">
+        <header class="flex justify-center">
+            <h1 class="text-4xl text-white slide-top" style="margin-top: 5%;">
+                mstry.
+            </h1>
+        </header>
+        <section>
+            <form action="results.html" method="GET">
+                <div>
+                    <label for="name">User Name</label>
+                    <input type="text" name="name" id="name">
+                </div>
+                <div>
+                    <input for="password">
+                    <label type="password" name="password">Password</label>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+        <script src="mstry.js"></script>
+    </body>
+</html>
