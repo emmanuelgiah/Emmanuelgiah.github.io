@@ -25,13 +25,13 @@ body {
     border-bottom: solid white 1px;
 }
 
-#twitterlink {
+#instalink {
     opacity: .4;
     transition: 0.5s;
     border-bottom: none;
 }
 
-#twitterlink:hover {
+#instalink:hover {
     opacity: .6;
     border-bottom: solid white 1px;
 }
