@@ -26,13 +26,13 @@ body {
 }
 
 #twitterlink {
-    opacity: .2;
+    opacity: .4;
     transition: 0.5s;
     border-bottom: none;
 }
 
 #twitterlink:hover {
-    opacity: .5;
+    opacity: .6;
     border-bottom: solid white 1px;
 }
 
