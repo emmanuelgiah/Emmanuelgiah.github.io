@@ -1,9 +1,9 @@
 function hero(posx) {
-	this.size = 30;
+	this.size = 20;
 	//colors
-	var r = 34;
-	var g = 102;
-	var b = 221;
+	var r = 45;
+	var g = 100;
+	var b = 225;
 	//position
 	this.x2 = windowWidth/2 - this.size;
 	this.x1 = this.x2 - this.size;

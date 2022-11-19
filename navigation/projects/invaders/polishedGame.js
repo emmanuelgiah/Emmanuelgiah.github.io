@@ -4,14 +4,24 @@ var vel = 0;
 var bullets = [];
 var badguys = [];
 var particles = [];
-var totalBadguys = 10;
+var totalBadguys = 2;
+var currentLevel = 1;
 //sounds
 /*var enemyImpact;
 var firing;*/
 
+/*TODO
+	- Day mode. Night Mode.
+	- Scoreboard.
+	- Sound.
+*/
+
+function preload() {
+	soundFormats('mp3', 'wav', 'ogg');
+	// enemyImpact = loadSound('sounds/shortImpact.wav');
+}
+
 function setup() {
-	/*enemyImpact = loadSound('sounds/shortImpact.wav');
-	firing = loadSound('sounds/fire.wav');*/
 	cnv = createCanvas(windowWidth-100, windowHeight-100);
 	cnv.position(50, 50);
 	h = new hero();
@@ -21,8 +31,8 @@ function setup() {
 
 function draw() {
 	stroke(255);
-	strokeWeight(2);
-	background("rgba(" + 37 + ", " + 44 + ", " + 51 + ", .9)");
+	strokeWeight(3);
+	background("rgba(" + 25 + ", " + 25 + ", " + 25 + ", .5)");
 
 	h.move(vel);
 	h.draw();
@@ -56,7 +66,7 @@ function draw() {
 		}
 	}
 	//show baddies
-	stroke(255);
+	stroke(255, 0, 0);
 	for (var i = badguys.length-1; i >= 0; i--) {
 		if (badguys[i].x >= (width+45)) {
 			badguys[i].x = 0-45;
@@ -84,16 +94,16 @@ function draw() {
 			if (dis <= bgs) {
 				var numParticles = Math.floor(Math.random() * 20) + 1;
 				for (var z = 0; z <= numParticles; z++) {
-					var p = new particle(bgx, bgy, badguys[q].s/2, 255, 95);
+					var p = new particle(bgx, bgy, badguys[q].s/2, 200, 80);
 					console.log(p);
 					particles.push(p);
 					if (z % 2 == 0) {
-						particles.push(new particle(bgx, bgy, 10/4, 95, 255))
+						particles.push(new particle(bgx, bgy, 10/4, 80, 200))
 					}
 				}
 				bullets.splice(i, 1);
 				badguys.splice(q, 1);
-				/*enemyImpact.play();*/
+				// enemyImpact.play();
 				dis = 0;
 			}
 		}
@@ -110,12 +120,14 @@ function draw() {
 
 	//checks if enemies
 	if (badguys.length == 0) {
+		alert("Starting New Round: " + currentLevel);
+		currentLevel++;
 		totalBadguys += 10;
 		createEnemies(totalBadguys);
 	}
 	
 	//slows down the movement
-	vel *= 0.92;
+	vel *= 0.88;
 }
 
 function windowResized() {
@@ -134,7 +146,7 @@ function keyReleased() {
 	//firing
 	if (keyCode === 32 || keyCode === UP_ARROW) {
 		bullets.push(new bullet(h.x2, h.y2));
-		/*firing.play();*/
+		// firing.play();
 	}
 }
 

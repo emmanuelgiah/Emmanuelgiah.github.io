@@ -8,7 +8,7 @@ function bullet(xpos, ypos) {
 	}
 
 	this.draw = function() {
-		fill(100, 100, 240);
-		ellipse(this.x, this.y, 10, 10);
+		fill(50, 100, 255);
+		ellipse(this.x, this.y, 5, 5);
 	}
-}
+ }
