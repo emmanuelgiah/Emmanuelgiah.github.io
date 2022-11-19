@@ -6,14 +6,13 @@ var badguys = [];
 var particles = [];
 var totalBadguys = 2;
 var currentLevel = 1;
+var currentScore = 0;
 //sounds
 /*var enemyImpact;
 var firing;*/
 
 /*TODO
 	- Day mode. Night Mode.
-	- Scoreboard.
-	- Sound.
 */
 
 function preload() {
@@ -92,6 +91,7 @@ function draw() {
 
 			var dis = dist(blx, bly, bgx + bgs, bgy + bgs);
 			if (dis <= bgs) {
+				currentScore++;
 				var numParticles = Math.floor(Math.random() * 20) + 1;
 				for (var z = 0; z <= numParticles; z++) {
 					var p = new particle(bgx, bgy, badguys[q].s/2, 200, 80);
@@ -120,7 +120,7 @@ function draw() {
 
 	//checks if enemies
 	if (badguys.length == 0) {
-		alert("Starting New Round: " + currentLevel);
+		alert("Starting New Round: " + currentLevel + "\nCurrent Score: " + currentScore);
 		currentLevel++;
 		totalBadguys += 10;
 		createEnemies(totalBadguys);
@@ -166,8 +166,4 @@ function createEnemies(num) {
 		}
 		xpos++;
 	}
-}
-
-function play() {
-	
 }
