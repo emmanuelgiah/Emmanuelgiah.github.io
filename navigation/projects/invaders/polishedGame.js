@@ -12,7 +12,7 @@ var currentScore = 0;
 var firing;*/
 
 /*TODO
-	- Social Network
+	- Sound
 */
 
 function preload() {
@@ -82,7 +82,7 @@ function draw() {
 		//die function
 		var linearDistance = dist(h.x2, h.y2, badguys[i].x, badguys[i].y);
 		if (linearDistance <= (h.size/2)) {
- 			alert("You've been Deaded.\nMore Games Coming Soon.\nTweet Your High Score @squooff." + "\nHigh Score: " + currentScore + "\nMax Level: " + currentLevel);
+ 			alert("You Lost.\nMore Games Coming Soon.\nTweet Your High Score." + "\nHigh Score: " + currentScore + "\nMax Level: " + currentLevel);
 		}
 	}
 	//checks hits
