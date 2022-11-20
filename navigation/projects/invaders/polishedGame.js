@@ -12,7 +12,7 @@ var currentScore = 0;
 var firing;*/
 
 /*TODO
-	- Day mode. Night Mode.
+	- Die function
 */
 
 function preload() {
@@ -78,6 +78,12 @@ function draw() {
 			badguys[i].strafe();
 			badguys[i].draw();
 		}
+
+		//die function
+		var linearDistance = dist(h.x2, h.y2, badguys[i].x, badguys[i].y);
+		if (linearDistance <= (h.size/2)) {
+ 			alert("You've been Deaded.\nSubscribe For More." + "\nHigh Score: " + currentScore + "\nMax Level: " + currentLevel);
+		}
 	}
 	//checks hits
 	for (var i = bullets.length-1; i >= 0; i--) {
@@ -91,11 +97,9 @@ function draw() {
 
 			var dis = dist(blx, bly, bgx + bgs, bgy + bgs);
 			if (dis <= bgs) {
-				currentScore++;
 				var numParticles = Math.floor(Math.random() * 20) + 1;
 				for (var z = 0; z <= numParticles; z++) {
 					var p = new particle(bgx, bgy, badguys[q].s/2, 200, 80);
-					console.log(p);
 					particles.push(p);
 					if (z % 2 == 0) {
 						particles.push(new particle(bgx, bgy, 10/4, 80, 200))
@@ -104,6 +108,8 @@ function draw() {
 				bullets.splice(i, 1);
 				badguys.splice(q, 1);
 				// enemyImpact.play();
+				currentScore++;
+				console.log("Deaded Enemies: " + currentScore);
 				dis = 0;
 			}
 		}
@@ -156,7 +162,7 @@ function createEnemies(num) {
 	var xpos = (Math.random() * 20);
 	//generates new baddies
 	for (var i = 1; i <= num; i++) {
-		if (i % 5 == 0) {
+		if (i % 10 == 0) {
 			//creates a new row of badguys
 			ypos += height/(num + 1);
 			xpos = 1;

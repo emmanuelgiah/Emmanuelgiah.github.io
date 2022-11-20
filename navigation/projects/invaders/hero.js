@@ -1,5 +1,5 @@
 function hero(posx) {
-	this.size = 20;
+	this.size = 30;
 	//colors
 	var r = 25;
 	var g = 150;
@@ -12,6 +12,7 @@ function hero(posx) {
 	this.y1 = height-25;
 	this.y2 = this.y1 - this.size;
 	this.y3 = this.y1;
+
 	//slow
 	this.friction = 0.8;
 
