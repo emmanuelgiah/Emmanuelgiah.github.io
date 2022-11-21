@@ -67,11 +67,18 @@ function draw() {
 	//show baddies
 	stroke(255, 0, 0);
 	for (var i = badguys.length-1; i >= 0; i--) {
-		if (badguys[i].x >= (width+45)) {
-			badguys[i].x = 0-45;
-			badguys[i].y += height/11;
-			badguys[i].vel += (badguys[i].vel / 11);
+		if (badguys[i].x >= (width+50)) {
+			badguys[i].x = 0-50;
+			badguys[i].y += height/10;
+			badguys[i].vel += (badguys[i].vel / 10);
 
+			badguys[i].strafe();
+			badguys[i].draw();
+		} else if (badguys[i].y >= height) {
+			badguys[i].x = 0-50;
+			badguys[i].y = height/10;
+			badguys[i].vel += (badguys[i].vel / 10);
+			
 			badguys[i].strafe();
 			badguys[i].draw();
 		} else {
