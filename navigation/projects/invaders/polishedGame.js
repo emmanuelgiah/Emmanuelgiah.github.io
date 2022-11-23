@@ -7,18 +7,6 @@ var particles = [];
 var totalBadguys = 2;
 var currentLevel = 1;
 var currentScore = 0;
-//sounds
-/*var enemyImpact;
-var firing;*/
-
-/*TODO
-	- Sound
-*/
-
-function preload() {
-	soundFormats('mp3', 'wav', 'ogg');
-	// enemyImpact = loadSound('sounds/shortImpact.wav');
-}
 
 function setup() {
 	cnv = createCanvas(windowWidth-100, windowHeight-100);
@@ -90,7 +78,7 @@ function draw() {
 		var sizeFactor = badguys[i].s/2;
 		var linearDistance = dist(h.x2, h.y2, badguys[i].x + sizeFactor, badguys[i].y + sizeFactor);
 		if (linearDistance <= (h.size/2)) {
- 			alert("You Lost.\nMore Games Coming Soon.\nTweet Your High Score." + "\nHigh Score: " + currentScore + "\nMax Level: " + currentLevel);
+ 			alert("You Lost.\nMore Games Coming Soon.\nHigh Score: " + currentScore + "\nMax Level: " + currentLevel);
 		}
 	}
 	//checks hits
@@ -115,7 +103,6 @@ function draw() {
 				}
 				bullets.splice(i, 1);
 				badguys.splice(q, 1);
-				// enemyImpact.play();
 				currentScore++;
 				console.log("Deaded Enemies: " + currentScore);
 				dis = 0;
