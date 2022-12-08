@@ -37,5 +37,3 @@ function getQuote() {
 
 getQuote()
 setInterval(getQuote, 6000);
-
-
