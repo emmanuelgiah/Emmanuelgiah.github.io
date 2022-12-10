@@ -13,7 +13,7 @@ function setup() {
 	lineStrokeA = random(100);
 	lineStrokeB = random(100);
 	
-	speed = 25;
+	speed = 20;
 }
 
 function draw() {
