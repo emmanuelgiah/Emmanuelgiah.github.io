@@ -25,8 +25,8 @@ function draw() {
 	var newy = starty + disty;
 
 	if (newx > 0 && newx < width && newy > 0 && newy < height) {
-		strokeWeight(2);
-		stroke(255, 255, 255, 100);
+		strokeWeight(4);
+		stroke(255, 255, 255, 50);
 		line(startx, starty, newx, newy);
 		startx = newx;
 		starty = newy;
@@ -42,9 +42,8 @@ function draw() {
 			var newtrax = points[i+trailLength][0];
 			var newtray = points[i+trailLength][1];
 
-			gradientLine(trax, tray, newtrax, newtray, color(red+i, green, lineStrokeA), color(red+i, green, lineStrokeB), 5);
+			gradientLine(trax, tray, newtrax, newtray, color(red+i, green, lineStrokeA), color(red+i, green, lineStrokeB), 2);
 		}
-
 		noLoop();
 	}
 
@@ -62,6 +61,18 @@ function gradientLine(x1, y1, x2, y2, c1, c2, sz) {
 	  noStroke()
 	  ellipse(x, y, sz, sz)
 	}
+}
+
+function mousePressed() {
+	//reset cache
+	document.body.style.background = "rgba(" + 0 + ", " + 0 + ", " + 0 + ", 1)";
+	speed = document.querySelector("input").value;
+	startx = mouseX;
+	starty = mouseY;
+	lineStrokeA = random(100);
+	lineStrokeB = random(100);
+	console.log("KANYe UPDATE");
+	
 }
 
 function windowResized() {
