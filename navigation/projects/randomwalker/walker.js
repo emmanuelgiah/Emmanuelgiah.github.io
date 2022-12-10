@@ -13,11 +13,10 @@ function setup() {
 	lineStrokeA = random(100);
 	lineStrokeB = random(100);
 	
-	speed = document.querySelector("input").value;
+	speed = 25;
 }
 
 function draw() {
-	speed = document.querySelector("input").value;
 	var distx = (Math.random() * (speed * 2)) - speed;
 	var disty = (Math.random() * (speed * 2)) - speed;
 
@@ -66,13 +65,12 @@ function gradientLine(x1, y1, x2, y2, c1, c2, sz) {
 function mousePressed() {
 	//reset cache
 	document.body.style.background = "rgba(" + 0 + ", " + 0 + ", " + 0 + ", 1)";
-	speed = document.querySelector("input").value;
-	startx = mouseX;
-	starty = mouseY;
 	lineStrokeA = random(100);
 	lineStrokeB = random(100);
+	startx = mouseX;
+	starty = mouseY;
+	speed = 25;
 	console.log("KANYe UPDATE");
-	
 }
 
 function windowResized() {
