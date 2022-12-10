@@ -1,7 +1,7 @@
 let particles;
-let rcolorScale = Math.floor(Math.random() * 50);
-let gcolorScale = Math.floor(Math.random() * 50);
-let bcolorScale = Math.floor(Math.random() * 50);
+let rcolorScale = Math.floor(Math.random() * 100);
+let gcolorScale = Math.floor(Math.random() * 100);
+let bcolorScale = Math.floor(Math.random() * 100);
 
 let r;
 let g;
@@ -16,7 +16,7 @@ function setup() {
 	particles = [];
 
 	translate(windowWidth/2, windowHeight/2);
-	for (let i = 0; i < 50; i++) {
+	for (let i = 0; i < 100; i++) {
 		particles.push(new particle(windowWidth/2, windowHeight/2, 10))
 	}
 

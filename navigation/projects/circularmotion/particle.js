@@ -9,15 +9,11 @@ function particle(x, y, radius) {
 	this.scale = 2;
 	this.xdistance = Math.floor(Math.random() * (Math.pow(this.r, this.scale))) + (Math.pow(this.r, this.scale));
 	this.ydistance = Math.floor(Math.random() * (Math.pow(this.r, this.scale))) + (Math.pow(this.r, this.scale));
-	//saves original circumference
-	this.origxdistance = this.xdistance;
-	this.origydistance = this.ydistance;
 	this.velocity = 0.1;
 	//boolean values
 	this.searching = false;
 	this.exploding = false;
 	this.orbitLock = false;
-	
 	this.orbitX = this.x;
 	this.orbitY = this.y;
 
@@ -34,8 +30,8 @@ function particle(x, y, radius) {
 		} else if (this.exploding) {
 			this.explode();
 		} else {
-			this.x = (mouseX + Math.cos(this.radians) * this.xdistance);
-			this.y = (mouseY + Math.sin(this.radians) * this.ydistance);
+			this.x = (windowWidth/2 + Math.cos(this.radians) * this.xdistance);
+			this.y = (windowHeight/2 + Math.sin(this.radians) * this.ydistance);
 		}
 		
 		this.draw();
@@ -73,8 +69,8 @@ function particle(x, y, radius) {
 		    yslope = (mouseY + Math.sin(this.radians) * this.ydistance) - this.y;
 		}
 
-		this.x += xslope*(this.velocity/6);
-		this.y += yslope*(this.velocity/6);
+		this.x += xslope*(this.velocity/10);
+		this.y += yslope*(this.velocity/10);
 	}
 	this.draw = function() {
 		stroke('rgba(' + this.gr + ', ' + 
