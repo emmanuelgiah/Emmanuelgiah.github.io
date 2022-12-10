@@ -95,10 +95,10 @@ function draw() {
 			if (dis <= bgs) {
 				var numParticles = Math.floor(Math.random() * 20) + 1;
 				for (var z = 0; z <= numParticles; z++) {
-					var p = new particle(bgx, bgy, badguys[q].s/2, 200, 80);
+					var p = new particle(bgx, bgy, badguys[q].s/2, 150, 50);
 					particles.push(p);
 					if (z % 2 == 0) {
-						particles.push(new particle(bgx, bgy, 10/4, 80, 200))
+						particles.push(new particle(bgx, bgy, 10/4, 50, 150))
 					}
 				}
 				bullets.splice(i, 1);

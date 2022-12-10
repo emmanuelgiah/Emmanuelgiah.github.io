@@ -9,7 +9,7 @@ function enemy(xpos, ypos, size) {
 	}
 
 	this.draw = function(){
-		fill(50, 50, 100);
+		fill(35, 40, 75);
 		rect(this.x, this.y, this.s, this.s);
 	}
 }

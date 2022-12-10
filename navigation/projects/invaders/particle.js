@@ -7,7 +7,7 @@ function particle (xpos, ypos, sizeRange, r, b) {
 
 	//color
 	this.r = r;
-	this.g = 60;
+	this.g = 40;
 	this.b = b;
 	this.opacity = Math.random() * 1;
 
