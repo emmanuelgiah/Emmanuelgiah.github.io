@@ -16,8 +16,8 @@ body {
 .mainContain {
 
 	background: linear-gradient(to bottom right, 
-		rgb(95, 30, 12), 
-		rgb(3, 60, 73));
+		rgb(95, 25, 10), 
+		rgb(10, 50, 75));
 
 	border-radius: 2px;
 	text-align: center;
