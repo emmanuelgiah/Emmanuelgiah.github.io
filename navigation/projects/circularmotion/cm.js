@@ -1,7 +1,7 @@
 let particles;
-let rcolorScale = Math.floor(Math.random() * 100);
-let gcolorScale = Math.floor(Math.random() * 100);
-let bcolorScale = Math.floor(Math.random() * 100);
+let rcolorScale = Math.floor(Math.random() * 50);
+let gcolorScale = Math.floor(Math.random() * 50);
+let bcolorScale = Math.floor(Math.random() * 50);
 
 let r;
 let g;
@@ -17,7 +17,7 @@ function setup() {
 
 	translate(windowWidth/2, windowHeight/2);
 	for (let i = 0; i < 100; i++) {
-		particles.push(new particle(windowWidth/2, windowHeight/2, 10))
+		particles.push(new particle(windowWidth/2, windowHeight/2, 8))
 	}
 
 	r = rcolorScale;
@@ -107,4 +107,5 @@ function touchStarted() {
 			particles[i].exploding = true;
 		}
 	}
+	console.log("Touched.");
 }
