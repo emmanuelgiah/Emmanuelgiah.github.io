@@ -97,3 +97,14 @@ function mousePressed() {
 		}
 	}
 }
+
+function touchStarted() {
+	for (var i = 0; i < particles.length; i++) {
+		if (particles[i].exploding == true) {
+			particles[i].exploding = false;
+			particles[i].searching = false;
+		} else {
+			particles[i].exploding = true;
+		}
+	}
+}
