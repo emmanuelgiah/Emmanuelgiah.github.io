@@ -20,6 +20,15 @@ function changeQuote() {
     document.getElementById("authorQuery").setAttribute("href", wiki);
 }
 
+//quote formatting 
+function quoteFilter(quote) {
+    var quoteLength = quote.split(" ").length;
+    if (quoteLength <= 30)  {
+        return true;
+    }
+    return false;
+}
+
 //getting the quotes from the first source 
 function getQuote() {
     $.getJSON(link1, function( data ) {
@@ -27,11 +36,11 @@ function getQuote() {
         temp = json.quotes;
         //format json as objects
         for (var i = 0; i < temp.length; i++) {
-            quotes.push(new Quote(temp[i].quote, temp[i].author));
+            if (quoteFilter(temp[i].quote)) {
+                quotes.push(new Quote(temp[i].quote, temp[i].author));
+            }
         }
-
         changeQuote();
-
     });
 }
 
