@@ -13,7 +13,7 @@ function setup() {
 	cnv.position(50, 50);
 	h = new hero();
 	createEnemies(totalBadguys);
-	frameRate(60);
+	frameRate(120);
 }
 
 function draw() {

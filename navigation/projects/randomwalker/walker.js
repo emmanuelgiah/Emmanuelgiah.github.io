@@ -70,7 +70,6 @@ function mousePressed() {
 	startx = mouseX;
 	starty = mouseY;
 	speed = 25;
-	console.log("KANYe UPDATE");
 }
 
 function windowResized() {

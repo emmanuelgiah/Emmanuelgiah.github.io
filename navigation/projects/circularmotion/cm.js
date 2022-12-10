@@ -74,7 +74,6 @@ function mouseWheel(event) {
 function mousePressed() {
 	//explosion check
 	if (mouseButton == LEFT) {
-		
 		for (var i = 0; i < particles.length; i++) {
 			if (particles[i].exploding == true) {
 				particles[i].exploding = false;
