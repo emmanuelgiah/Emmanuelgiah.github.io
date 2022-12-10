@@ -23,7 +23,7 @@ function changeQuote() {
 //quote formatting 
 function quoteFilter(quote) {
     var quoteLength = quote.split(" ").length;
-    if (quoteLength <= 25)  {
+    if (quoteLength <= 20)  {
         return true;
     }
     return false;
