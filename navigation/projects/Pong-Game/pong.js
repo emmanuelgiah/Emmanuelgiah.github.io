@@ -1,15 +1,20 @@
-var userPaddle;
+var heroPaddle;
+var enemyPaddle;
 
 function setup() {
-	createCanvas(windowWidth, windowHeight);
-	userPaddle = new paddle(25, height/2);
+	createCanvas(windowWidth-20, windowHeight-20);
+	heroPaddle = new paddle(25, height/2);
+	enemyPaddle = new paddle(25, height/2);
+	ball = new ball(windowWidth/2, windowHeight/2, 10);
 }
 
 function draw() {
 	background("rgba(0, 0, 0, 1)");
-	userPaddle.draw();
-}
+	heroPaddle.draw();
+	enemyPaddle.draw();
+	ball.draw();
+}	
 
 function windowResized() {
-	re
+	resizeCanvas(windowWidth-20, windowHeight-20);
 }
