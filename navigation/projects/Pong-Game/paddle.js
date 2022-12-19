@@ -1,24 +1,21 @@
-function paddle(startX, startY) {
+function paddle(startX, startY, paddleSize) {
 	this.xpos = startX;
 	this.ypos = startY;
-	this.friction = 0.8;
-
-	this.strafe = function(vel) {
-		this.ypos += vel;
-	}
-
-	this.strafe = function(d) {
-		var dir = d;
-		if (dir > 0) {
-			this.ypos += dir;
-		} else {
-			this.ypos -= dir;
+	this.size = paddleSize;
+	//dynamic movement function
+	this.strafe = function(directional) {
+		console.log(directional);
+		if (directional == 40) {
+			this.ypos += (directional/5);
+		} else if (directional == 38) {
+			this.ypos -= (directional/5);
 		}
 	}
-
-
+	//render paddle
 	this.draw = function() {
 		fill(255);
-		rect(this.xpos, this.ypos, 10, 100);
+		stroke(0);
+		strokeWeight(3);
+		rect(this.xpos, this.ypos, (paddleSize*.1), paddleSize);
 	}
 }

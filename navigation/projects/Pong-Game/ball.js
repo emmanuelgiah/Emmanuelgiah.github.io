@@ -4,19 +4,19 @@ function ball(xpos, ypos, radius) {
     this.r = radius;
     this.vel = Math.sqrt(radius);
 
+    this.bounce = function(directional) {
+		console.log("Omnidirectional: " + directional);
+		this.x += directional;
 
-    this.bounce = function(player) {
-        if (player == true) {
-            this.move();
+        if (this.x > width-20) {
+            this.bounce(-directional);
         }
-
-        if (player == false) {
-            this.move();
-        }
-    }
+	}
 
     this.draw = function() {
         fill(255);
+        stroke(0);
+        strokeWeight(3);
         ellipse(this.x, this.y, radius, radius);
     }
 }

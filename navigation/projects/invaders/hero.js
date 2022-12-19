@@ -12,10 +12,7 @@ function hero(posx) {
 	this.y1 = height-25;
 	this.y2 = this.y1 - this.size;
 	this.y3 = this.y1;
-
-	//slow
-	this.friction = 0.8;
-
+	
 	this.move = function(d) {
 		var dir = d;
 		if (dir > 0) {
