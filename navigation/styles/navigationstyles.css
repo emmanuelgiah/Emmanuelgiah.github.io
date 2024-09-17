@@ -89,8 +89,27 @@ body {
 
 /*About Me Page Styles */
 .about-me-container {
-    animation: fadein 1s;
-    color: white;
+animation: fadein 1s;
+color: white;
+display: flex;
+align-items: flex-start; /* Aligns items vertically centered */
+}
+    
+.about-me-container-text {
+width: 100%
+}
+
+.about-me-container-image {
+        display: flex;
+        justify-content: flex-end; /* Aligns image container to the right */
+        align-items: flex-start; /* Vertically centers the image within its container */
+        margin: none;
+        padding: none;
+}
+
+.right-aligned-image {
+        max-width: 60%; /* Scales the image to 50% of its original size */
+        height: auto; /* Maintains aspect ratio */
 }
 
 /*Add fade in animations */
