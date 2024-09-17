@@ -1,9 +1,16 @@
+/*General html*/
+html {
+	height: 100%;
+}
+
 body {
     /*sauce*/
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: 'Lato', sans-serif;
-    font-family: 'Nanum Myeongjo', serif;
+	background: black;
+	size: cover;
+	font-family: 'Heebo', sans-serif;
+        font-weight: 100;
 }
 
 .fade-slide-animation  {
@@ -15,24 +22,24 @@ body {
 }
 
 #authorQuery {
-    opacity: 0.2;
+    opacity: 0.5;
     transition: 0.5s;
     border-bottom: none;
 }
 
 #authorQuery:hover {
-    opacity: .5;
+    opacity: .8;
     border-bottom: solid white 1px;
 }
 
 #instalink {
-    opacity: .4;
+    opacity: .5;
     transition: 0.5s;
     border-bottom: none;
 }
 
 #instalink:hover {
-    opacity: .6;
+    opacity: .8;
     border-bottom: solid white 1px;
 }
 
@@ -44,6 +51,27 @@ body {
     .sm\:mw-540 {
         max-width: 540px;
     }
+}
+
+/*banner text styles*/
+.banner-text {
+        color: white;
+        opacity: 1;
+        margin-left: 1%;
+        margin-top: 2%;
+}
+
+.banner-text a {
+margin-left: 1%;
+opacity: .3;
+color: white;
+text-decoration: none;
+transition: 0.3s;
+}
+
+.banner-text a:hover {
+opacity: 0.9;
+cursor: pointer;
 }
 
 /*Add fade in animations */

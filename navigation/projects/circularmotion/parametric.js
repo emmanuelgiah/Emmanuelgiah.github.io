@@ -19,7 +19,7 @@ let g;
 let b;
 
 function setup() {
-	createCanvas(windowWidth-20, windowHeight-20);
+	createCanvas(windowWidth-75, windowHeight-75);
 	x1 = 0;
 	x2 = 0;
 	y1 = 0;
@@ -68,7 +68,7 @@ function draw() {
 }
 
 function windowResized() {
-	resizeCanvas(windowWidth - 19.5001, windowHeight - 19.5001);
+	resizeCanvas(windowWidth - 75, windowHeight - 75);
 }
 
 function changeX1(t) {

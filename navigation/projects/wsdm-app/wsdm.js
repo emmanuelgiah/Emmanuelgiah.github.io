@@ -13,7 +13,7 @@ function changeQuote() {
     document.getElementById("quotePlaceHolder").innerHTML = "";
     document.getElementById("authorPlaceHolder").innerHTML = "";
     //change
-    document.getElementById("quotePlaceHolder").innerHTML = quotes[index].getQuote();
+    document.getElementById("quotePlaceHolder").innerHTML = `"${quotes[index].getQuote()}"`;
     document.getElementById("authorPlaceHolder").innerHTML = quotes[index].getAuthor();
     //modify the link
     let wiki = "https://en.wikipedia.org/wiki/" + quotes[index].getAuthor();
