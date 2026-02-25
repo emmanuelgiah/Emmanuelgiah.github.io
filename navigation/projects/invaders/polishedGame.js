@@ -16,6 +16,8 @@ let particles = [];
 let enemyCount = 20;
 let currentLevel = 1;
 let currentScore = 0;
+let gameOverState = false;
+let gameOverTimer = 0;
 
 function setup() {
 	cnv = createCanvas(windowWidth - 200, windowHeight - 200);
@@ -34,6 +36,19 @@ function draw() {
 	fill(25, 25, 25, 80);
 	noStroke();
 	rect(0, 0, width, height);
+	
+	// If game over, only update particles and check timer
+	if (gameOverState) {
+		updateParticles();
+		gameOverTimer++;
+		
+		// Show game over after particles have dissipated (about 2 seconds at 120fps)
+		if (gameOverTimer > 240) {
+			showGameOver(currentScore, currentLevel);
+			noLoop();
+		}
+		return;
+	}
 	
 	updateHero();
 	updateBullets();
@@ -73,6 +88,8 @@ function updateHero() {
 }
 
 function updateBullets() {
+	if (gameOverState) return;
+	
 	noStroke();
 	for (let i = bullets.length - 1; i >= 0; i--) {
 		if (bullets[i].isOffScreen()) {
@@ -85,6 +102,8 @@ function updateBullets() {
 }
 
 function updateEnemies() {
+	if (gameOverState) return;
+	
 	for (let i = enemies.length - 1; i >= 0; i--) {
 		const enemy = enemies[i];
 		
@@ -124,6 +143,8 @@ function updateParticles() {
 }
 
 function checkCollisions() {
+	if (gameOverState) return;
+	
 	for (let i = bullets.length - 1; i >= 0; i--) {
 		const bullet = bullets[i];
 		
@@ -157,6 +178,8 @@ function createExplosion(x, y, size) {
 }
 
 function checkLevelComplete() {
+	if (gameOverState) return;
+	
 	if (enemies.length === 0) {
 		showLevelComplete(currentLevel, currentScore);
 		currentLevel++;
@@ -179,11 +202,9 @@ function gameOver() {
 	// Hide hero immediately
 	h = null;
 	
-	// Wait for explosion animation to complete before showing game over
-	setTimeout(() => {
-		showGameOver(currentScore, currentLevel);
-		noLoop();
-	}, 1500);
+	// Set game over state to true - this keeps the loop running for particles
+	gameOverState = true;
+	gameOverTimer = 0;
 }
 
 function createHeroExplosion(x, y, size) {

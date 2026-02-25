@@ -1,7 +1,7 @@
 let particles;
-let rcolorScale = Math.floor(Math.random() * 50) + 20;
-let gcolorScale = Math.floor(Math.random() * 30) + 10;
-let bcolorScale = Math.floor(Math.random() * 80) + 40;
+let rcolorScale = Math.floor(Math.random() * 20) + 5;  // Reduced from 50+20 to 20+5
+let gcolorScale = Math.floor(Math.random() * 15) + 5;  // Reduced from 30+10 to 15+5
+let bcolorScale = Math.floor(Math.random() * 30) + 10; // Reduced from 80+40 to 30+10
 
 let r;
 let g;
@@ -99,9 +99,9 @@ function keyPressed() {
 	
 	// R: randomize colors
 	if (key === 'r' || key === 'R') {
-		rcolorScale = Math.floor(Math.random() * 50) + 20;
-		gcolorScale = Math.floor(Math.random() * 30) + 10;
-		bcolorScale = Math.floor(Math.random() * 80) + 40;
+		rcolorScale = Math.floor(Math.random() * 20) + 5;
+		gcolorScale = Math.floor(Math.random() * 15) + 5;
+		bcolorScale = Math.floor(Math.random() * 30) + 10;
 		r = rcolorScale;
 		g = gcolorScale;
 		b = bcolorScale;

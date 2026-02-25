@@ -3,25 +3,31 @@ class Paddle {
 	constructor(x, y, isUser) {
 		this.x = x;
 		this.y = y;
+		this.targetY = y;
 		this.width = 12;
 		this.height = 120;
 		this.speed = 8;
 		this.isUser = isUser;
+		this.easing = 0.15; // Easing factor for smooth movement
 	}
 
 	update() {
 		if (!this.isUser) return;
 		
-		// Arrow key controls
+		// Arrow key controls - set target position
 		if (keyIsDown(UP_ARROW)) {
-			this.y -= this.speed;
+			this.targetY -= this.speed;
 		}
 		if (keyIsDown(DOWN_ARROW)) {
-			this.y += this.speed;
+			this.targetY += this.speed;
 		}
 		
-		// Constrain to canvas
-		this.y = constrain(this.y, 0, height - this.height);
+		// Constrain target to canvas
+		this.targetY = constrain(this.targetY, 0, height - this.height);
+		
+		// Smooth easing to target position
+		const diff = this.targetY - this.y;
+		this.y += diff * this.easing;
 	}
 
 	followBall(ball) {

@@ -4,10 +4,14 @@ const QUOTE_REFRESH_INTERVAL = 6000;
 const MAX_QUOTE_WORDS = 20;
 
 let quotes = [];
+let isFirstLoad = true;
 
 // Initialize app
 async function init() {
 	try {
+		// Set initial blue background
+		setBackgroundColor(10, 50, 75);
+		
 		await fetchQuotes();
 		displayRandomQuote();
 		setInterval(displayRandomQuote, QUOTE_REFRESH_INTERVAL);
@@ -15,6 +19,20 @@ async function init() {
 		console.error('Failed to initialize WSDM:', error);
 		displayError();
 	}
+}
+
+// Generate muted random background color
+function generateMutedColor() {
+	const r = Math.floor(Math.random() * 20) + 5;  // 5-25
+	const g = Math.floor(Math.random() * 15) + 5;  // 5-20
+	const b = Math.floor(Math.random() * 30) + 10; // 10-40
+	return { r, g, b };
+}
+
+// Set background color with smooth transition
+function setBackgroundColor(r, g, b) {
+	document.body.style.transition = 'background-color 1s ease';
+	document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 }
 
 // Fetch quotes from API
@@ -51,6 +69,13 @@ function displayRandomQuote() {
 	const selectedQuote = quotes[randomIndex];
 	
 	updateDOM(selectedQuote);
+	
+	// Generate new muted background for each quote (except first load)
+	if (!isFirstLoad) {
+		const color = generateMutedColor();
+		setBackgroundColor(color.r, color.g, color.b);
+	}
+	isFirstLoad = false;
 }
 
 // Update DOM elements
