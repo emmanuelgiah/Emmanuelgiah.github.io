@@ -14,7 +14,6 @@
 	<!-- Styles -->
 	<link rel="stylesheet" href="../../../styles/main.css">
 	<link rel="stylesheet" href="../../../styles/games.css">
-	<link rel="stylesheet" href="styles.css">
 	
 	<!-- p5.js -->
 	<script src="p5/p5.min.js"></script>
@@ -25,21 +24,212 @@
 	
 	<style>
 		body {
+			background: linear-gradient(to bottom right, rgb(95, 25, 10), rgb(10, 50, 75));
 			overflow: hidden;
 			height: 100vh;
+			margin: 0;
+			padding: 0;
 		}
 		
-		.back-nav {
+		#game-container {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		
+		.game-ui {
 			position: absolute;
-			top: 1rem;
-			left: 1rem;
+			top: 1.5rem;
+			right: 1.5rem;
+			color: white;
+			font-family: 'Heebo', sans-serif;
+			text-align: right;
 			z-index: 10;
+		}
+		
+		.game-ui-item {
+			font-weight: 200;
+			font-size: 1rem;
+			opacity: 0.8;
+			margin-bottom: 0.5rem;
+		}
+		
+		.game-ui-value {
+			font-weight: 300;
+			font-size: 1.3rem;
+			opacity: 1;
+		}
+		
+		.controls {
+			position: absolute;
+			bottom: 1.5rem;
+			left: 50%;
+			transform: translateX(-50%);
+			display: flex;
+			gap: 1rem;
+			z-index: 10;
+		}
+		
+		.help-footer {
+			position: fixed;
+			bottom: 1rem;
+			right: 1rem;
+			color: white;
+			font-family: 'Heebo', sans-serif;
+			font-weight: 300;
+			font-size: 0.85rem;
+			opacity: 0.5;
+			z-index: 10;
+		}
+		
+		.control-btn {
+			background: rgba(255, 140, 60, 0.2);
+			border: 1px solid rgba(255, 140, 60, 0.5);
+			color: white;
+			padding: 0.5rem 1.5rem;
+			font-size: 0.9rem;
+			font-family: 'Heebo', sans-serif;
+			font-weight: 300;
+			cursor: pointer;
+			border-radius: 4px;
+			transition: all 0.3s ease;
+		}
+		
+		.control-btn:hover {
+			background: rgba(255, 140, 60, 0.4);
+			box-shadow: 0 0 20px rgba(255, 140, 60, 0.5);
+		}
+		
+		.control-btn.active {
+			background: rgba(255, 140, 60, 0.5);
+			border-color: rgba(255, 140, 60, 0.8);
+		}
+		
+		.modal {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.9);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			z-index: 1000;
+		}
+		
+		.modal-content {
+			background: linear-gradient(135deg, rgba(95, 25, 10, 0.95), rgba(10, 50, 75, 0.95));
+			padding: 3rem;
+			border-radius: 8px;
+			max-width: 600px;
+			color: white;
+			font-family: 'Heebo', sans-serif;
+			box-shadow: 0 0 60px rgba(255, 140, 60, 0.3);
+			border: 1px solid rgba(255, 255, 255, 0.1);
+		}
+		
+		.modal-content h2 {
+			font-weight: 200;
+			font-size: 2rem;
+			margin-bottom: 1.5rem;
+			letter-spacing: 0.1em;
+		}
+		
+		.modal-content p {
+			font-weight: 300;
+			line-height: 1.8;
+			margin-bottom: 1rem;
+			opacity: 0.9;
+		}
+		
+		.modal-content button {
+			background: rgba(255, 140, 60, 0.2);
+			border: 1px solid rgba(255, 140, 60, 0.5);
+			color: white;
+			padding: 0.75rem 2rem;
+			font-size: 1rem;
+			font-family: 'Heebo', sans-serif;
+			font-weight: 300;
+			cursor: pointer;
+			border-radius: 4px;
+			margin-top: 1rem;
+			transition: all 0.3s ease;
+		}
+		
+		.modal-content button:hover {
+			background: rgba(255, 140, 60, 0.4);
+			box-shadow: 0 0 20px rgba(255, 140, 60, 0.5);
+		}
+		
+		.hidden {
+			display: none;
 		}
 	</style>
 </head>
 <body class="walker-game">
-	<nav class="back-nav banner-text">
-		<a href="../../projects.html">&lt;&nbsp;Projects</a>
-	</nav>
+	<div class="help-footer">Press 'i' for instructions</div>
+	
+	<div class="game-ui">
+		<div class="game-ui-item">
+			Steps: <span id="steps-display" class="game-ui-value">0</span>
+		</div>
+		<div class="game-ui-item">
+			Distance: <span id="distance-display" class="game-ui-value">0</span>
+		</div>
+		<div class="game-ui-item">
+			Walkers: <span id="walkers-display" class="game-ui-value">1</span>
+		</div>
+	</div>
+	
+	<div id="game-container"></div>
+	
+	<div class="controls">
+		<button class="control-btn" onclick="changeMode('standard')">Standard</button>
+		<button class="control-btn" onclick="changeMode('levy')">Levy Flight</button>
+		<button class="control-btn" onclick="changeMode('biased')">Biased</button>
+		<button class="control-btn" onclick="toggleWrap()">Toggle Wrap</button>
+		<button class="control-btn" onclick="addWalker()">Add Walker</button>
+		<button class="control-btn" onclick="resetAll()">Reset</button>
+	</div>
+	
+	<div id="instructionsModal" class="modal">
+		<div class="modal-content">
+			<h2>RANDOM WALKER</h2>
+			<p>
+				Watch particles explore the canvas with random movement. Click anywhere to spawn a new walker. 
+				Try different modes: Standard (equal probability), Levy Flight (occasional long jumps), or Biased (tends toward center). 
+				Toggle wrap mode to let walkers teleport across edges!
+			</p>
+			<button onclick="closeModal()">Start</button>
+		</div>
+	</div>
+	
+	<script>
+		function closeModal() {
+			document.getElementById('instructionsModal').classList.add('hidden');
+		}
+		
+		function updateSteps(steps) {
+			document.getElementById('steps-display').textContent = steps;
+		}
+		
+		function updateDistance(distance) {
+			document.getElementById('distance-display').textContent = Math.floor(distance);
+		}
+		
+		function updateWalkerCount(count) {
+			document.getElementById('walkers-display').textContent = count;
+		}
+		
+		// I key to show instructions
+		document.addEventListener('keypress', function(e) {
+			if (e.key === 'i' || e.key === 'I') {
+				document.getElementById('instructionsModal').classList.remove('hidden');
+			}
+		});
+	</script>
 </body>
 </html>

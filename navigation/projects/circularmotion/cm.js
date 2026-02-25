@@ -1,111 +1,115 @@
 let particles;
-let rcolorScale = Math.floor(Math.random() * 50);
-let gcolorScale = Math.floor(Math.random() * 50);
-let bcolorScale = Math.floor(Math.random() * 50);
+let rcolorScale = Math.floor(Math.random() * 50) + 20;
+let gcolorScale = Math.floor(Math.random() * 30) + 10;
+let bcolorScale = Math.floor(Math.random() * 80) + 40;
 
 let r;
 let g;
 let b;
 
-let xpolosionfactor = 0;
-let ypolosionfactor = 0;
-let hasExploded = false;
+let particleCount = 150;
+let orbitSpeed = 0.05;
+let explosionForce = 1.5;
 
 function setup() {
-	createCanvas(windowWidth-10, windowHeight-20);
+	createCanvas(windowWidth, windowHeight);
 	particles = [];
 
-	translate(windowWidth/2, windowHeight/2);
-	for (let i = 0; i < 100; i++) {
-		particles.push(new particle(windowWidth/2, windowHeight/2, 8))
+	for (let i = 0; i < particleCount; i++) {
+		particles.push(new particle(width/2, height/2, random(6, 12)));
 	}
 
 	r = rcolorScale;
 	g = gcolorScale;
 	b = bcolorScale;
 
-	document.body.style.background = "rgba(" + r + ", " + g + ", " + b + ", 1)";
+	document.body.style.background = `rgba(${r}, ${g}, ${b}, 1)`;
 }
 
 function draw() {
+	// Reduced trailing effect (increased alpha from 40 to 80)
 	noStroke();
-	fill("rgba(" + r + ", " + g + ", " + b + ", 1)");
-	rect(0, 0, window.width, window.height);
-	fill("rgba(" + r + ", " + g + ", " + b + ", .5)");
-	//corner check
-	for (var i = 0; i < particles.length; i++) {
-		//checks if in orbit
-		if ((particles[i].x < 0) ||
-			(particles[i].x > width+10) ||
-			(particles[i].y < 0) ||
-			(particles[i].y > height+10)) {
-			particles[i].exploding = false;
-			particles[i].searching = true;
-		}
-		//checks if in orbit
-		if ((dist(particles[i].x, mouseY, mouseX, mouseY) <= particles[i].xdistance) ||
-			(dist(mouseX, particles[i].y, mouseX, mouseY) <= particles[i].ydistance)) {
-			particles[i].searching = false;
-		}
-	}
+	fill(r, g, b, 80);
+	rect(0, 0, width, height);
 	
-	for (var i = 0; i < particles.length; i++) {
-		particles[i].update();
-		particles[i].draw();
+	// Update all particles
+	for (let i = 0; i < particles.length; i++) {
+		const p = particles[i];
+		
+		// Check if particle is off screen
+		if (p.x < -50 || p.x > width + 50 || p.y < -50 || p.y > height + 50) {
+			p.exploding = false;
+			p.searching = true;
+		}
+		
+		// Check if particle reached orbit around mouse
+		const distToMouse = dist(p.x, p.y, mouseX, mouseY);
+		if (distToMouse <= p.xdistance + 20 && p.searching) {
+			p.searching = false;
+			p.orbitLock = true;
+			p.orbitX = mouseX;
+			p.orbitY = mouseY;
+		}
+		
+		// Update orbit center to follow mouse smoothly
+		if (p.orbitLock && !p.exploding) {
+			p.orbitX = lerp(p.orbitX, mouseX, 0.1);
+			p.orbitY = lerp(p.orbitY, mouseY, 0.1);
+		}
+		
+		p.update();
+		p.draw();
 	}
 }
 
 function windowResized() {
-	resizeCanvas(windowWidth-19.50008, windowHeight-19.50008);
-	particles = [];
-	for (let i = 0; i < 100; i++) {
-		particles.push(new particle(mouseX, mouseY, 7))
-	}
-
+	resizeCanvas(windowWidth, windowHeight);
 }
 
 function mouseWheel(event) {
+	// Zoom in/out orbit distance
 	for (let i = 0; i < particles.length; i++) {
-		particles[i].xdistance += (event.delta/25);
-		particles[i].ydistance += (event.delta/25);
+		particles[i].xdistance = constrain(particles[i].xdistance + (event.delta / 25), 20, 400);
+		particles[i].ydistance = constrain(particles[i].ydistance + (event.delta / 25), 20, 400);
 	}
 }
 
 function mousePressed() {
-	//explosion check
-	if (mouseButton == LEFT) {
-		for (var i = 0; i < particles.length; i++) {
-			if (particles[i].exploding == true) {
-				particles[i].exploding = false;
-				particles[i].searching = false;
-			} else {
-				particles[i].exploding = true;
-			}
-		}
-	} else  {
-		for (var i = 0; i < particles.length; i++) {
-			if (particles[i].orbitLock == true) {
-				particles[i].searching = true;
-				particles[i].orbitLock = false;
-			} else {
-				particles[i].orbitX = mouseX;
-				particles[i].orbitY = mouseY;
-				particles[i].searching = false;
-				particles[i].orbitLock = true;
-				
-			}
+	// Left click or touch: explode/implode
+	for (let i = 0; i < particles.length; i++) {
+		if (particles[i].exploding) {
+			particles[i].exploding = false;
+			particles[i].searching = true;
+			particles[i].orbitLock = false;
+		} else {
+			particles[i].exploding = true;
+			particles[i].orbitLock = false;
 		}
 	}
 }
 
-function touchStarted() {
-	for (var i = 0; i < particles.length; i++) {
-		if (particles[i].exploding == true) {
-			particles[i].exploding = false;
-			particles[i].searching = false;
-		} else {
-			particles[i].exploding = true;
+function keyPressed() {
+	// Space: reset particles
+	if (key === ' ') {
+		particles = [];
+		for (let i = 0; i < particleCount; i++) {
+			particles.push(new particle(mouseX, mouseY, random(6, 12)));
 		}
 	}
-	console.log("Touched.");
+	
+	// R: randomize colors
+	if (key === 'r' || key === 'R') {
+		rcolorScale = Math.floor(Math.random() * 50) + 20;
+		gcolorScale = Math.floor(Math.random() * 30) + 10;
+		bcolorScale = Math.floor(Math.random() * 80) + 40;
+		r = rcolorScale;
+		g = gcolorScale;
+		b = bcolorScale;
+		document.body.style.background = `rgba(${r}, ${g}, ${b}, 1)`;
+	}
+	
+	// I: show instructions
+	if (key === 'i' || key === 'I') {
+		document.getElementById('instructionsModal').classList.remove('hidden');
+	}
 }

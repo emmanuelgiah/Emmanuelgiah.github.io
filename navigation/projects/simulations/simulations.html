@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="../../assets/logo.svg">
+	<title>Simulations</title>
+	
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400&display=swap" rel="stylesheet">
+	
+	<!-- Styles -->
+	<link rel="stylesheet" href="../../../styles/main.css">
+	<link rel="stylesheet" href="../../../styles/games.css">
+	
+	<style>
+		body {
+			background: linear-gradient(to bottom right, rgb(95, 25, 10), rgb(10, 50, 75));
+			overflow: hidden;
+			height: 100vh;
+			padding: 3rem;
+		}
+		
+		.back-nav {
+			position: absolute;
+			top: 1.5rem;
+			left: 1.5rem;
+			z-index: 10;
+		}
+		
+		.simulation-title {
+			position: absolute;
+			top: 1.5rem;
+			left: 50%;
+			transform: translateX(-50%);
+			color: white;
+			font-family: 'Heebo', sans-serif;
+			font-weight: 200;
+			font-size: 1.5rem;
+			letter-spacing: 0.1em;
+			opacity: 0.8;
+			z-index: 10;
+		}
+		
+		.simulation-dropdown {
+			position: absolute;
+			top: 1.5rem;
+			right: 1.5rem;
+			z-index: 10;
+		}
+		
+		.dropdown-btn {
+			background: rgba(255, 140, 60, 0.2);
+			border: 1px solid rgba(255, 140, 60, 0.5);
+			color: white;
+			padding: 0.5rem 1.5rem;
+			font-size: 0.9rem;
+			font-family: 'Heebo', sans-serif;
+			font-weight: 300;
+			cursor: pointer;
+			border-radius: 4px;
+			transition: all 0.3s ease;
+			opacity: 0.5;
+		}
+		
+		.dropdown-btn:hover {
+			background: rgba(255, 140, 60, 0.4);
+			box-shadow: 0 0 20px rgba(255, 140, 60, 0.5);
+			opacity: 1;
+		}
+		
+		.dropdown-content {
+			display: none;
+			position: absolute;
+			right: 0;
+			top: 100%;
+			margin-top: 0.5rem;
+			background: rgba(10, 50, 75, 0.95);
+			border: 1px solid rgba(255, 140, 60, 0.5);
+			border-radius: 4px;
+			min-width: 200px;
+			box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+		}
+		
+		.dropdown-content.show {
+			display: block;
+		}
+		
+		.dropdown-content a {
+			display: block;
+			padding: 0.75rem 1.5rem;
+			color: white;
+			text-decoration: none;
+			font-family: 'Heebo', sans-serif;
+			font-weight: 300;
+			font-size: 0.9rem;
+			transition: all 0.3s ease;
+			opacity: 0.7;
+		}
+		
+		.dropdown-content a:hover {
+			background: rgba(255, 140, 60, 0.3);
+			opacity: 1;
+		}
+		
+		.dropdown-content a.active {
+			background: rgba(255, 140, 60, 0.2);
+			opacity: 1;
+		}
+		
+		#simulation-frame {
+			width: calc(100% - 200px);
+			height: calc(100% - 200px);
+			border: 3px solid rgba(0, 0, 0, 0.8);
+			border-radius: 4px;
+			margin: 100px;
+		}
+	</style>
+</head>
+<body>
+	<nav class="back-nav banner-text">
+		<a href="../../projects.html">&lt;&nbsp;Projects</a>
+	</nav>
+	
+	<div class="simulation-title" id="simulationTitle">Parametric Equations</div>
+	
+	<div class="simulation-dropdown">
+		<button class="dropdown-btn" onclick="toggleDropdown()">Switch Simulation ▾</button>
+		<div class="dropdown-content" id="dropdownMenu">
+			<a href="#" onclick="loadSimulation('parametric', 'Parametric Equations')" class="active">Parametric Equations</a>
+			<a href="#" onclick="loadSimulation('circular', 'Circular Motion')">Circular Motion</a>
+			<a href="#" onclick="loadSimulation('walker', 'Random Walker')">Random Walker</a>
+		</div>
+	</div>
+	
+	<iframe id="simulation-frame" src="../circularmotion/parametric.html"></iframe>
+	
+	<script>
+		function toggleDropdown() {
+			document.getElementById('dropdownMenu').classList.toggle('show');
+		}
+		
+		function loadSimulation(type, title) {
+			const frame = document.getElementById('simulation-frame');
+			const titleEl = document.getElementById('simulationTitle');
+			const links = document.querySelectorAll('.dropdown-content a');
+			
+			// Update title
+			titleEl.textContent = title;
+			
+			// Update active state
+			links.forEach(link => link.classList.remove('active'));
+			event.target.classList.add('active');
+			
+			// Load simulation
+			if (type === 'parametric') {
+				frame.src = '../circularmotion/parametric.html';
+			} else if (type === 'circular') {
+				frame.src = '../circularmotion/circular.html';
+			} else if (type === 'walker') {
+				frame.src = '../randomwalker/walker.html';
+			}
+			
+			// Close dropdown
+			document.getElementById('dropdownMenu').classList.remove('show');
+		}
+		
+		// Close dropdown when clicking outside
+		window.onclick = function(event) {
+			if (!event.target.matches('.dropdown-btn')) {
+				const dropdown = document.getElementById('dropdownMenu');
+				if (dropdown.classList.contains('show')) {
+					dropdown.classList.remove('show');
+				}
+			}
+		}
+	</script>
+</body>
+</html>

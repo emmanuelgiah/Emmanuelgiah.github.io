@@ -73,6 +73,18 @@
 			opacity: 1;
 		}
 		
+		.help-footer {
+			position: fixed;
+			bottom: 1rem;
+			right: 1rem;
+			color: white;
+			font-family: 'Heebo', sans-serif;
+			font-weight: 300;
+			font-size: 0.85rem;
+			opacity: 0.5;
+			z-index: 10;
+		}
+		
 		.game-message {
 			position: absolute;
 			top: 50%;
@@ -194,6 +206,8 @@
 		<a href="../../projects.html">&lt;&nbsp;Projects</a>
 	</nav>
 	
+	<div class="help-footer">Press 'i' for instructions</div>
+	
 	<div class="game-ui">
 		<div class="game-ui-item">
 			Level: <span id="level-display" class="game-ui-value">1</span>
@@ -263,6 +277,13 @@
 			document.getElementById('levelText').textContent = `Level ${level} | Score: ${score}`;
 			document.getElementById('levelMessage').classList.add('show');
 		}
+		
+		// I key to show instructions
+		document.addEventListener('keypress', function(e) {
+			if (e.key === 'i' || e.key === 'I') {
+				document.getElementById('instructionsModal').classList.remove('hidden');
+			}
+		});
 	</script>
 </body>
 </html>

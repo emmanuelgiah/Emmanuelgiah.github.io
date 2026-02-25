@@ -73,6 +73,18 @@
 			font-weight: 200;
 		}
 		
+		.help-footer {
+			position: fixed;
+			bottom: 1rem;
+			right: 1rem;
+			color: white;
+			font-family: 'Heebo', sans-serif;
+			font-weight: 300;
+			font-size: 0.85rem;
+			opacity: 0.5;
+			z-index: 10;
+		}
+		
 		.modal {
 			position: fixed;
 			top: 0;
@@ -142,6 +154,8 @@
 	
 	<h1 class="game-title">PONG</h1>
 	
+	<div class="help-footer">Press 'i' for instructions</div>
+	
 	<div id="instructionsModal" class="modal">
 		<div class="modal-content">
 			<h2>PONG</h2>
@@ -163,6 +177,13 @@
 		function closeModal() {
 			document.getElementById('instructionsModal').classList.add('hidden');
 		}
+		
+		// I key to show instructions
+		document.addEventListener('keypress', function(e) {
+			if (e.key === 'i' || e.key === 'I') {
+				document.getElementById('instructionsModal').classList.remove('hidden');
+			}
+		});
 	</script>
 </body>
 </html>
