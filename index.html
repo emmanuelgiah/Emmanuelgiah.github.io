@@ -1,39 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<link rel="icon" href="navigation/assets/logo.svg">
-	<title>Giah.io</title>
-	<!-- Include Bootstrap Styles / Fonts / Styles -->
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="strap3.3.7/css/bootstrap.min.css">
-	<link href="https://fonts.googleapis.com/css?family=Heebo:100" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="styles/landingstyles.css">
-	<!--Include Font-->
+	<meta name="author" content="Emmanuel Giah">
+	<meta name="description" content="Emmanuel Giah - Full Stack Software Engineer Portfolio">
+	<link rel="icon" href="navigation/assets/logo.svg">
+	<title>Emmanuel Giah - Full Stack Engineer</title>
+	
+	<!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100&family=Nanum+Myeongjo:wght@400;700;800&family=Work+Sans:ital,wght@0,100;0,200;0,400;1,100&family=Yantramanav:wght@100;300;400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400&display=swap" rel="stylesheet">
+	
+	<!-- Styles -->
+	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="styles/main.css">
+	
+	<style>
+		body {
+			overflow: hidden;
+		}
+		
+		.hero-card {
+			height: 75vh;
+			display: flex;
+			flex-direction: column;
+		}
+		
+		.hero-nav {
+			padding-top: 3rem;
+			padding-bottom: 2rem;
+		}
+		
+		.hero-content {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			padding-bottom: 5rem;
+		}
+		
+		.hero-title {
+			font-weight: 100;
+			letter-spacing: 0.05em;
+		}
+		
+		.hero-subtitle {
+			font-weight: 300;
+			font-style: italic;
+		}
+		
+		@media (max-width: 640px) {
+			.hero-card {
+				height: 100vh;
+				border-radius: 0;
+			}
+		}
+	</style>
 </head>
 <body>
-	<section class="block items-center sm:mt-24 mt-none">
-		<div class="container w-full sm:w-11/12 sm:h-3/6 h-screen mainContain 
-					bg-gray-500 rounded-none sm:rounded-sm" id="main">
-			<div class="row">
-				<div class="col-lg-12">
-					<h4 class="sm:text-3xl text-md navbar">
-						<a href="navigation/me.html">· About Me </a>
-						<a href="navigation/resume.html"> · Resume</a>
-						<a href="navigation/projects.html"> · Projects ·</a>
-					</h4>
-					<h1 class="sm:text-8xl text-md">Emmanuel Giah</h1>
-					<h3 class="md:text-5xl text-md px-12"><em>Full Stack Software Engineer</em></h3>
-					
-				</div>
+	<main class="flex items-center justify-center h-screen p-0 sm:p-8">
+		<section class="hero-card w-full sm:w-11/12 max-w-7xl mainContain rounded-none sm:rounded-sm">
+			<nav class="hero-nav text-center">
+				<h4 class="text-base sm:text-2xl tracking-widest">
+					<a href="navigation/me.html" class="mx-2 sm:mx-4">· About Me ·</a>
+					<a href="navigation/resume.html" class="mx-2 sm:mx-4">· Resume ·</a>
+					<a href="navigation/projects.html" class="mx-2 sm:mx-4">· Projects ·</a>
+				</h4>
+			</nav>
+			
+			<div class="hero-content">
+				<h1 class="hero-title text-3xl sm:text-6xl lg:text-7xl mb-6 sm:mb-8">
+					Emmanuel Giah
+				</h1>
+				<h2 class="hero-subtitle text-lg sm:text-2xl lg:text-3xl opacity-80">
+					Full Stack Software Engineer
+				</h2>
 			</div>
-		</div>
-	</section>
-	<script type="text/javascript">
-		
-	</script>
+		</section>
+	</main>
 </body>
 </html>

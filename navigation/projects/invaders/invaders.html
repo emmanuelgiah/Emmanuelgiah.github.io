@@ -1,37 +1,268 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<link rel="icon" href="../../assets/logo.svg">
-	<title>Invaders-Game.</title>
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--Include Font-->
+	<link rel="icon" href="../../assets/logo.svg">
+	<title>Space Invaders</title>
+	
+	<!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100&family=Nanum+Myeongjo:wght@400;700;800&family=Work+Sans:ital,wght@0,100;0,200;0,400;1,100&family=Yantramanav:wght@100;300;400;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="../../styles/navigationstyles.css">
+	<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400&display=swap" rel="stylesheet">
+	
+	<!-- Styles -->
+	<link rel="stylesheet" href="../../../styles/main.css">
+	<link rel="stylesheet" href="../../../styles/games.css">
+	
+	<!-- p5.js -->
 	<script src="p5/p5.js"></script>
 	<script src="p5/addons/p5.dom.js"></script>
 	<script src="p5/addons/p5.sound.js"></script>
-	<script src="polishedGame.js"></script>
-	<script src="particle.js"></script>
+	
+	<!-- Game Scripts -->
+	<script src="bullet.js"></script>
 	<script src="enemy.js"></script>
 	<script src="hero.js"></script>
-	<script src="bullet.js"></script>
+	<script src="particle.js"></script>
+	<script src="polishedGame.js"></script>
+	
 	<style>
-		html {
-			height: 100%;
-			background: linear-gradient(to bottom right, rgb(200, 25, 10), rgb(10, 50, 100));
-		}
 		body {
-			-webkit-font-smoothing: antialiased;
-    		-moz-osx-font-smoothing: grayscale;
-                        background: none;
+			background: linear-gradient(to bottom right, rgb(200, 25, 10), rgb(10, 50, 100));
+			overflow: hidden;
+			height: 100vh;
+			padding: 3rem;
+		}
+		
+		.back-nav {
+			position: absolute;
+			top: 1.5rem;
+			left: 1.5rem;
+			z-index: 10;
+		}
+		
+		#game-container {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		
+		.game-ui {
+			position: absolute;
+			top: 1.5rem;
+			right: 1.5rem;
+			color: white;
+			font-family: 'Heebo', sans-serif;
+			text-align: right;
+			z-index: 10;
+		}
+		
+		.game-ui-item {
+			font-weight: 200;
+			font-size: 1.2rem;
+			opacity: 0.8;
+			margin-bottom: 0.5rem;
+		}
+		
+		.game-ui-value {
+			font-weight: 300;
+			font-size: 1.5rem;
+			opacity: 1;
+		}
+		
+		.game-message {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background: linear-gradient(135deg, rgba(200, 25, 10, 0.95), rgba(10, 50, 100, 0.95));
+			padding: 3rem 4rem;
+			border-radius: 8px;
+			color: white;
+			font-family: 'Heebo', sans-serif;
+			text-align: center;
+			z-index: 100;
+			box-shadow: 0 0 60px rgba(255, 100, 200, 0.3);
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			display: none;
+		}
+		
+		.game-message.show {
+			display: block;
+		}
+		
+		.game-message h2 {
+			font-weight: 200;
+			font-size: 2.5rem;
+			margin-bottom: 1rem;
+			letter-spacing: 0.1em;
+		}
+		
+		.game-message p {
+			font-weight: 300;
+			font-size: 1.2rem;
+			margin-bottom: 1.5rem;
+			opacity: 0.9;
+		}
+		
+		.game-message button {
+			background: rgba(255, 100, 200, 0.2);
+			border: 1px solid rgba(255, 100, 200, 0.5);
+			color: white;
+			padding: 0.75rem 2rem;
+			font-size: 1rem;
+			font-family: 'Heebo', sans-serif;
+			font-weight: 300;
+			cursor: pointer;
+			border-radius: 4px;
+			margin: 0.5rem;
+			transition: all 0.3s ease;
+		}
+		
+		.game-message button:hover {
+			background: rgba(255, 100, 200, 0.4);
+			box-shadow: 0 0 20px rgba(255, 100, 200, 0.5);
+		}
+		
+		.modal {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.9);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			z-index: 1000;
+		}
+		
+		.modal-content {
+			background: linear-gradient(135deg, rgba(200, 25, 10, 0.95), rgba(10, 50, 100, 0.95));
+			padding: 3rem;
+			border-radius: 8px;
+			max-width: 600px;
+			color: white;
+			font-family: 'Heebo', sans-serif;
+			box-shadow: 0 0 60px rgba(255, 100, 200, 0.3);
+			border: 1px solid rgba(255, 255, 255, 0.1);
+		}
+		
+		.modal-content h2 {
+			font-weight: 200;
+			font-size: 2rem;
+			margin-bottom: 1.5rem;
+			letter-spacing: 0.1em;
+		}
+		
+		.modal-content p {
+			font-weight: 300;
+			line-height: 1.8;
+			margin-bottom: 1rem;
+			opacity: 0.9;
+		}
+		
+		.modal-content button {
+			background: rgba(255, 100, 200, 0.2);
+			border: 1px solid rgba(255, 100, 200, 0.5);
+			color: white;
+			padding: 0.75rem 2rem;
+			font-size: 1rem;
+			font-family: 'Heebo', sans-serif;
+			font-weight: 300;
+			cursor: pointer;
+			border-radius: 4px;
+			margin-top: 1rem;
+			transition: all 0.3s ease;
+		}
+		
+		.modal-content button:hover {
+			background: rgba(255, 100, 200, 0.4);
+			box-shadow: 0 0 20px rgba(255, 100, 200, 0.5);
+		}
+		
+		.hidden {
+			display: none;
 		}
 	</style>
 </head>
-<body>
-        <h3 class="text-3xl banner-text">
-                <a href="../../projects.html">  &lt;/Projects </a> 
-        </h3>
+<body class="invaders-game">
+	<nav class="back-nav banner-text">
+		<a href="../../projects.html">&lt;&nbsp;Projects</a>
+	</nav>
+	
+	<div class="game-ui">
+		<div class="game-ui-item">
+			Level: <span id="level-display" class="game-ui-value">1</span>
+		</div>
+		<div class="game-ui-item">
+			Score: <span id="score-display" class="game-ui-value">0</span>
+		</div>
+	</div>
+	
+	<div id="game-container"></div>
+	
+	<div id="gameMessage" class="game-message">
+		<h2 id="messageTitle">Game Over</h2>
+		<p id="messageText">Final Score: 0</p>
+		<button onclick="restartGame()">Restart</button>
+	</div>
+	
+	<div id="levelMessage" class="game-message">
+		<h2>Level Complete!</h2>
+		<p id="levelText">Level 1 | Score: 0</p>
+		<button onclick="nextLevel()">Next Level</button>
+	</div>
+	
+	<div id="instructionsModal" class="modal">
+		<div class="modal-content">
+			<h2>SPACE INVADERS</h2>
+			<p>
+				Use LEFT and RIGHT arrow keys to move your ship. Press SPACEBAR or UP ARROW to fire. 
+				Destroy all invaders before they reach the bottom. They get faster each level!
+			</p>
+			<button onclick="closeModal()">Start Game</button>
+		</div>
+	</div>
+	
+	<script>
+		function closeModal() {
+			document.getElementById('instructionsModal').classList.add('hidden');
+		}
+		
+		function restartGame() {
+			document.getElementById('gameMessage').classList.remove('show');
+			window.location.reload();
+		}
+		
+		function nextLevel() {
+			document.getElementById('levelMessage').classList.remove('show');
+			if (window.continueGame) {
+				window.continueGame();
+			}
+		}
+		
+		function updateScore(score) {
+			document.getElementById('score-display').textContent = score;
+		}
+		
+		function updateLevel(level) {
+			document.getElementById('level-display').textContent = level;
+		}
+		
+		function showGameOver(score, level) {
+			document.getElementById('messageTitle').textContent = 'Game Over';
+			document.getElementById('messageText').textContent = `Final Score: ${score} | Max Level: ${level}`;
+			document.getElementById('gameMessage').classList.add('show');
+		}
+		
+		function showLevelComplete(level, score) {
+			document.getElementById('levelText').textContent = `Level ${level} | Score: ${score}`;
+			document.getElementById('levelMessage').classList.add('show');
+		}
+	</script>
 </body>
 </html>

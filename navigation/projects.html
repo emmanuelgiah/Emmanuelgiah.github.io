@@ -1,39 +1,120 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<link rel="icon" href="../navigation/assets/logo.svg">
-	<title>Projects.</title>
-	<!-- Include Bootstrap Styles / Fonts / Styles -->
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="../strap3.3.7/css/bootstrap.min.css">
-	<link href="https://fonts.googleapis.com/css?family=Heebo:100" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="styles/navigationstyles.css">
-	<!--Include Font-->
+	<meta name="author" content="Emmanuel Giah">
+	<link rel="icon" href="../navigation/assets/logo.svg">
+	<title>Projects - Emmanuel Giah</title>
+	
+	<!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100&family=Nanum+Myeongjo:wght@400;700;800&family=Work+Sans:ital,wght@0,100;0,200;0,400;1,100&family=Yantramanav:wght@100;300;400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400&display=swap" rel="stylesheet">
+	
+	<!-- Styles -->
+	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../styles/main.css">
+	
+	<style>
+		body {
+			overflow: hidden;
+		}
+		
+		.page-container {
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+			padding: 0;
+		}
+		
+		.back-nav {
+			position: absolute;
+			top: 1rem;
+			left: 1rem;
+			z-index: 10;
+		}
+		
+		.hero-card {
+			height: 75vh;
+			display: flex;
+			flex-direction: column;
+		}
+		
+		.hero-nav {
+			padding-top: 3rem;
+			padding-bottom: 2rem;
+		}
+		
+		.hero-content {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			padding-bottom: 5rem;
+		}
+		
+		.hero-title {
+			font-weight: 100;
+			letter-spacing: 0.05em;
+		}
+		
+		.hero-subtitle {
+			font-weight: 300;
+			font-style: italic;
+		}
+		
+		@media (max-width: 640px) {
+			.hero-card {
+				height: 100vh;
+				border-radius: 0;
+			}
+			
+			.page-container {
+				padding: 0;
+			}
+		}
+	</style>
 </head>
 <body>
-    <h3 class="text-md banner-text">
-        <a href="../index.html">  &lt;/Home </a> 
-    </h3>
-	<section class="block items-center sm:mt-12 mt-none">
-		<div class="container w-full sm:w-11/12 sm:h-3/6 h-screen mainContain 
-						bg-gray-500 rounded-none sm:rounded-sm" id="main">
-			<div class="row">
-				<div class="col-lg-12">
-					<h4 class="sm:text-3xl text-md navbar">
-						<a href="https://www.youtube.com/@giahbeats">· GiahBeats</a>
-						<a href="./projects/invaders/invaders.html">· Invaders</a>
-						<a href="./projects/circularmotion/parametric.html">· Screensaver ·</a>
-						<a href="./projects/wsdm-app/index.html"> WSDM ·</a>
+	<div class="page-container">
+		<nav class="back-nav banner-text">
+			<a href="../index.html">&lt;&nbsp;Home</a>
+		</nav>
+		
+		<main class="flex items-center justify-center flex-1 p-0 sm:p-8">
+			<section class="hero-card w-full sm:w-11/12 max-w-7xl mainContain rounded-none sm:rounded-sm">
+				<nav class="hero-nav text-center">
+					<h4 class="text-base sm:text-2xl tracking-widest">
+						<a href="https://www.youtube.com/@giahbeats" target="_blank" rel="noopener" class="mx-2 sm:mx-4">
+							· GiahBeats ·
+						</a>
+						<a href="./projects/invaders/invaders.html" class="mx-2 sm:mx-4">
+							· Invaders ·
+						</a>
+						<a href="./projects/Pong-Game/pong.html" class="mx-2 sm:mx-4">
+							· Pong ·
+						</a>
+						<a href="./projects/circularmotion/parametric.html" class="mx-2 sm:mx-4">
+							· Screensaver ·
+						</a>
+						<a href="./projects/wsdm-app/index.html" class="mx-2 sm:mx-4">
+							· WSDM ·
+						</a>
 					</h4>
-					<h1 class="sm:text-8xl text-md">Projects</h1>
-					<h3 class="md:text-5xl text-md px-12"><em>Front End Creations</em></h3>
+				</nav>
+				
+				<div class="hero-content">
+					<h1 class="hero-title text-3xl sm:text-6xl lg:text-7xl mb-6 sm:mb-8">
+						Projects
+					</h1>
+					<h2 class="hero-subtitle text-lg sm:text-2xl lg:text-3xl opacity-80">
+						Front End Creations
+					</h2>
 				</div>
-			</div>
-		</div>
-	</section>
+			</section>
+		</main>
+	</div>
 </body>
 </html>

@@ -1,33 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="../../assets/logo.svg">
-	<title>Parametric-Gradient.</title>
-        <!--Include Font-->
+	<title>Parametric Screensaver</title>
+	
+	<!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100&family=Nanum+Myeongjo:wght@400;700;800&family=Work+Sans:ital,wght@0,100;0,200;0,400;1,100&family=Yantramanav:wght@100;300;400;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="../../styles/navigationstyles.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script type="text/javascript" src="p5/p5.js"></script>
-	<script type="text/javascript" src="p5/addons/p5.dom.js"></script>
-	<script type="text/javascript" src="parametric.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400&display=swap" rel="stylesheet">
+	
+	<!-- Styles -->
+	<link rel="stylesheet" href="../../../styles/main.css">
+	<link rel="stylesheet" href="../../../styles/games.css">
+	
+	<!-- p5.js -->
+	<script src="p5/p5.js"></script>
+	<script src="p5/addons/p5.dom.js"></script>
+	
+	<!-- Game Scripts -->
+	<script src="particle.js"></script>
+	<script src="parametric.js"></script>
+	
 	<style>
-
-                html {
-                        height: 100%;
-                }
-
 		body {
-			-webkit-font-smoothing: antialiased;
-    		-moz-osx-font-smoothing: grayscale;
-			background: none;
+			background: rgb(105, 105, 105);
+			overflow: hidden;
+			height: 100vh;
+		}
+		
+		.back-nav {
+			position: absolute;
+			top: 1rem;
+			left: 1rem;
+			z-index: 10;
 		}
 	</style>
 </head>
-<body>
-        <h3 class="text-3xl banner-text">
-                <a href="../../projects.html">  &lt;/Projects </a> 
-        </h3>
+<body class="circular-motion">
+	<nav class="back-nav banner-text">
+		<a href="../../projects.html">&lt;&nbsp;Projects</a>
+	</nav>
 </body>
 </html>

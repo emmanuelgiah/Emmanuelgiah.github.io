@@ -1,54 +1,83 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <link rel="icon" href="./icon.svg">
-        <title>WSDM.</title>
-        <!--Font Smoothing-->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- Include Bootstrap Styles / Fonts / Styles -->
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-	<!-- <link rel="stylesheet" type="text/css" href="../../../strap3.3.7/css/bootstrap.min.css"> -->
-	<link href="https://fonts.googleapis.com/css?family=Heebo:100" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="../../styles/navigationstyles.css">
-        <link rel="stylesheet" type="text/css" href="./styles.css">
-	<!--Include Font-->
+	<link rel="icon" href="./icon.svg">
+	<title>WSDM - Wisdom</title>
+	
+	<!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100&family=Nanum+Myeongjo:wght@400;700;800&family=Work+Sans:ital,wght@0,100;0,200;0,400;1,100&family=Yantramanav:wght@100;300;400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400&display=swap" rel="stylesheet">
 	
-        <script
-            src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-            crossorigin="anonymous"></script>
-    </head>
-    <body class="bg-gray-800 text-white">
-        <h3 class="text-xl banner-text">
-                <a href="../../projects.html">  &lt;/Projects </a> 
-        </h3>
-        <header class="flex justify-center mt-5 fade-slide-animation">
-            <div>
-                <h1 class="sm:text-5xl text-8xl"> WSDM. </h1>
-            </div>
-        </header>
-        <!--This Section Displays The Quote-->
-        <section class="block items-center my-auto fade-slide-animation">
-            <div class="flex space-x-4 justify-center mt-48 mb-2 mx-auto mw-300 sm:mw-540">
-                <h2 id="quotePlaceHolder" class="sm:text-3xl text-xl"></h2>
-                <h3 id="authorPlaceHolder" class="sm:text-xl text-lg opacity-80"></h3>
-            </div>
-            <div class="flex justify-center">
-                <a id="authorQuery" href="#" class="mx-auto text-lg" target="_blank"> Learn More </a>
-            </div>
-        </section>
-        <!--This Section Displays The Speaker Information-->
-        <section>
-            
-        </section>
-        <footer class="flex justify-center items-center my-60 text-xl fade-animation">
-            <h1>Designed By <a id="instalink" href="https://www.linkedin.com/in/emmanuel-giah/" target="_blank"> Emmanuel Giah </a></h1>
-        </footer>
-        <script src="quote.js"></script>
-        <script src="wsdm.js"></script>
-    </body>
+	<!-- Styles -->
+	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../../../styles/main.css">
+	<link rel="stylesheet" href="./styles.css">
+	<style>
+		body {
+			overflow: hidden;
+			height: 100vh;
+		}
+		
+		.back-nav {
+			position: absolute;
+			top: 3rem;
+			left: 3rem;
+			z-index: 10;
+		}
+		
+		.wsdm-container {
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+		}
+	</style>
+</head>
+<body class="bg-gray-800 text-white">
+	<nav class="back-nav banner-text">
+		<a href="../../projects.html">&lt;&nbsp;Projects</a>
+	</nav>
+	
+	<div style="height: 100vh; display: flex; flex-direction: column; padding: 3rem;">
+		<header class="flex justify-center mt-12 fade-slide-animation">
+			<h1 class="text-5xl sm:text-8xl" style="font-weight: 100;">WSDM.</h1>
+		</header>
+		
+		<main class="flex flex-col items-center justify-center flex-1 px-4">
+			<section class="fade-slide-animation max-w-3xl w-full text-center space-y-6">
+				<blockquote id="quotePlaceHolder" class="text-xl sm:text-3xl leading-relaxed"></blockquote>
+				<cite id="authorPlaceHolder" class="text-lg sm:text-xl opacity-80 not-italic block"></cite>
+				<a 
+					id="authorQuery" 
+					href="#" 
+					class="inline-block text-lg hover-link" 
+					target="_blank" 
+					rel="noopener noreferrer"
+				>
+					Learn More
+				</a>
+			</section>
+		</main>
+		
+		<footer class="flex justify-center items-center py-8 text-lg fade-animation">
+			<p>
+				Designed by 
+				<a 
+					id="instalink" 
+					href="https://www.linkedin.com/in/emmanuel-giah/" 
+					target="_blank" 
+					rel="noopener noreferrer"
+					class="hover-link"
+				>
+					Emmanuel Giah
+				</a>
+			</p>
+		</footer>
+	</div>
+	
+	<script src="quote.js"></script>
+	<script src="wsdm.js"></script>
+</body>
 </html>

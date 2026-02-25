@@ -1,0 +1,216 @@
+/* ===================================
+   GLOBAL STYLES
+   =================================== */
+
+:root {
+    --gradient-start: rgb(95, 25, 10);
+    --gradient-end: rgb(10, 50, 75);
+    --text-white: rgba(255, 255, 255, 1);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --transition-smooth: 0.3s ease;
+    --font-primary: 'Heebo', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #000;
+    font-family: var(--font-primary);
+    font-weight: 100;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ===================================
+   MAIN CONTAINER
+   =================================== */
+
+.mainContain {
+    background: linear-gradient(to bottom right, var(--gradient-start), var(--gradient-end));
+    border-radius: 2px;
+    text-align: center;
+    letter-spacing: 5px;
+    animation: fadein 1.5s ease-in-out;
+}
+
+.mainContain h1 {
+    color: var(--text-white);
+    margin-top: -8%;
+}
+
+.mainContain h3 {
+    color: var(--text-white);
+    opacity: 0.8;
+    padding-bottom: 18%;
+}
+
+.mainContain a {
+    color: var(--text-white);
+    text-decoration: none;
+    opacity: 0.6;
+    transition: var(--transition-smooth);
+    border-bottom: 2px solid transparent;
+}
+
+.mainContain a:hover {
+    opacity: 1;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+.navbar {
+    margin-top: 2%;
+}
+
+/* ===================================
+   BANNER NAVIGATION
+   =================================== */
+
+.banner-text {
+    color: var(--text-white);
+    margin-left: 1%;
+    margin-top: 2%;
+    font-size: 1.25rem;
+}
+
+.banner-text a {
+    margin-left: 1%;
+    opacity: 0.5;
+    color: var(--text-white);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    white-space: nowrap;
+}
+
+.banner-text a:hover {
+    opacity: 1;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+/* ===================================
+   ABOUT ME PAGE
+   =================================== */
+
+.about-me-container {
+    animation: fadein 1s ease-in-out;
+    color: var(--text-white);
+    display: flex;
+    align-items: flex-start;
+    gap: 3rem;
+}
+
+.about-me-container-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.about-me-container-image {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-shrink: 0;
+}
+
+.right-aligned-image {
+    max-width: 320px;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+/* ===================================
+   RESUME PAGE
+   =================================== */
+
+.resume-container img {
+    animation: fadein 1s ease-in-out;
+    max-width: 100%;
+    height: auto;
+}
+
+/* ===================================
+   PROJECTS PAGE SPECIFIC
+   =================================== */
+
+.project-link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    transition: var(--transition-smooth);
+}
+
+.project-link:hover {
+    transform: translateY(-2px);
+}
+
+/* ===================================
+   ANIMATIONS
+   =================================== */
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeslide {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-animation {
+    animation: fadein 2s ease-in-out;
+}
+
+.fade-slide-animation {
+    animation: fadeslide 1.5s ease-in-out;
+}
+
+/* ===================================
+   UTILITY CLASSES
+   =================================== */
+
+.text-center {
+    text-align: center;
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ===================================
+   RESPONSIVE UTILITIES
+   =================================== */
+
+@media (max-width: 640px) {
+    .mainContain h1 {
+        margin-top: 0;
+    }
+    
+    .about-me-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .right-aligned-image {
+        max-width: 100%;
+    }
+}

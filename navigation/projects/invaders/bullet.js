@@ -1,14 +1,23 @@
-function bullet(xpos, ypos) {
-	this.vel = 25;
-	this.x = xpos;
-	this.y = ypos;
+// Bullet class for Space Invaders
+class Bullet {
+	constructor(x, y) {
+		this.x = x;
+		this.y = y;
+		this.vel = 25;
+		this.size = 5;
+	}
 
-	this.fire = function() {
+	fire() {
 		this.y -= this.vel;
 	}
 
-	this.draw = function() {
+	draw() {
 		fill(50, 100, 255);
-		ellipse(this.x, this.y, 5, 5);
+		noStroke();
+		ellipse(this.x, this.y, this.size, this.size);
 	}
- }
+
+	isOffScreen() {
+		return this.y < -10;
+	}
+}

@@ -1,77 +1,100 @@
-var startx = 0;
-var starty = 0;
-var speed;
-var speedSlider;
-var lineStrokeA;
-var lineStrokeB;
-var points = new Array();
+// Random Walker - Refactored
+const CANVAS_PADDING = 10;
+const STROKE_WEIGHT = 4;
+const STROKE_ALPHA = 50;
+const DEFAULT_SPEED = 20;
+const RESET_SPEED = 25;
+
+let startX = 0;
+let startY = 0;
+let speed = DEFAULT_SPEED;
+let lineStrokeA;
+let lineStrokeB;
+let points = [];
 
 function setup() {
-	createCanvas(windowWidth-10, windowHeight-20);
-	startx = width/2;
-	starty = height/2;
+	createCanvas(windowWidth - CANVAS_PADDING, windowHeight - 20);
+	startX = width / 2;
+	startY = height / 2;
 	lineStrokeA = random(100);
 	lineStrokeB = random(100);
-	
-	speed = 20;
 }
 
 function draw() {
-	var distx = (Math.random() * (speed * 2)) - speed;
-	var disty = (Math.random() * (speed * 2)) - speed;
-
-	var newx = startx + distx;
-	var newy = starty + disty;
-
-	if (newx > 0 && newx < width && newy > 0 && newy < height) {
-		strokeWeight(4);
-		stroke(255, 255, 255, 50);
-		line(startx, starty, newx, newy);
-		startx = newx;
-		starty = newy;
+	const distX = random(-speed, speed);
+	const distY = random(-speed, speed);
+	
+	const newX = startX + distX;
+	const newY = startY + distY;
+	
+	if (isWithinBounds(newX, newY)) {
+		drawLine(startX, startY, newX, newY);
+		startX = newX;
+		startY = newY;
+		points.push([newX, newY]);
 	} else {
-		background(0)
-		var trailLength = Math.floor(points.length/30);
-		let red = Math.floor(Math.random() * 100);
-		let green = Math.floor(Math.random() * 100);
-		for (var i = 0; i < points.length; i+=trailLength) {
-			var trax = points[i][0];
-			var tray = points[i][1];
-
-			var newtrax = points[i+trailLength][0];
-			var newtray = points[i+trailLength][1];
-
-			gradientLine(trax, tray, newtrax, newtray, color(red+i, green, lineStrokeA), color(red+i, green, lineStrokeB), 2);
-		}
+		renderTrail();
 		noLoop();
 	}
-
-	points.push([newx, newy]);
 }
 
-function gradientLine(x1, y1, x2, y2, c1, c2, sz) {
-	const d = dist(x1, y1, x2, y2)
-	for (let i = 0; i < d; i++) {
-	  const step = map(i, 0, d, 0, 1)
-	  const x = lerp(x1, x2, step)
-	  const y = lerp(y1, y2, step)
-	  const c = lerpColor(c1, c2, step)
-	  fill(c)
-	  noStroke()
-	  ellipse(x, y, sz, sz)
+function isWithinBounds(x, y) {
+	return x > 0 && x < width && y > 0 && y < height;
+}
+
+function drawLine(x1, y1, x2, y2) {
+	strokeWeight(STROKE_WEIGHT);
+	stroke(255, 255, 255, STROKE_ALPHA);
+	line(x1, y1, x2, y2);
+}
+
+function renderTrail() {
+	background(0);
+	const trailLength = Math.floor(points.length / 30);
+	const red = Math.floor(random(100));
+	const green = Math.floor(random(100));
+	
+	for (let i = 0; i < points.length - trailLength; i += trailLength) {
+		const [x1, y1] = points[i];
+		const [x2, y2] = points[i + trailLength];
+		
+		const color1 = color(red + i, green, lineStrokeA);
+		const color2 = color(red + i, green, lineStrokeB);
+		
+		gradientLine(x1, y1, x2, y2, color1, color2, 2);
+	}
+}
+
+function gradientLine(x1, y1, x2, y2, c1, c2, size) {
+	const distance = dist(x1, y1, x2, y2);
+	
+	for (let i = 0; i < distance; i++) {
+		const step = map(i, 0, distance, 0, 1);
+		const x = lerp(x1, x2, step);
+		const y = lerp(y1, y2, step);
+		const c = lerpColor(c1, c2, step);
+		
+		fill(c);
+		noStroke();
+		ellipse(x, y, size, size);
 	}
 }
 
 function mousePressed() {
-	//reset cache
-	document.body.style.background = "rgba(" + 0 + ", " + 0 + ", " + 0 + ", 1)";
+	resetWalker();
+	loop();
+}
+
+function resetWalker() {
+	background(0);
 	lineStrokeA = random(100);
 	lineStrokeB = random(100);
-	startx = mouseX;
-	starty = mouseY;
-	speed = 25;
+	startX = mouseX;
+	startY = mouseY;
+	speed = RESET_SPEED;
+	points = [];
 }
 
 function windowResized() {
-	resizeCanvas(windowWidth-20, windowHeight-20);
+	resizeCanvas(windowWidth - 20, windowHeight - 20);
 }

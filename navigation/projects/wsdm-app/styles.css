@@ -1,99 +1,52 @@
-/*General html*/
-html {
-	height: 100%;
-}
+/* WSDM App Styles */
 
-body {
-    /*sauce*/
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-	background: black;
-	size: cover;
-	font-family: 'Heebo', sans-serif;
-        font-weight: 100;
-}
-
-.fade-slide-animation  {
-    animation: fadeslide 3s;
+.fade-slide-animation {
+	animation: fadeslide 1.5s ease-in-out;
 }
 
 .fade-animation {
-    animation: fade 3s;
+	animation: fade 2s ease-in-out;
 }
 
-#authorQuery {
-    opacity: 0.5;
-    transition: 0.5s;
-    border-bottom: none;
+.hover-link {
+	opacity: 0.5;
+	transition: all 0.3s ease;
+	border-bottom: 1px solid transparent;
 }
 
-#authorQuery:hover {
-    opacity: .8;
-    border-bottom: solid white 1px;
+.hover-link:hover {
+	opacity: 0.9;
+	border-bottom-color: white;
 }
 
-#instalink {
-    opacity: .5;
-    transition: 0.5s;
-    border-bottom: none;
+/* Animations */
+@keyframes fadeslide {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
-#instalink:hover {
-    opacity: .8;
-    border-bottom: solid white 1px;
+@keyframes fade {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
-.mw-300 {
-    max-width: 300px;
-}
-
-@media (min-width: 540px) {
-    .sm\:mw-540 {
-        max-width: 540px;
-    }
-}
-
-/*banner text styles*/
-.banner-text {
-        color: white;
-        opacity: 1;
-        margin-left: 1%;
-        margin-top: 2%;
-}
-
-.banner-text a {
-margin-left: 1%;
-opacity: .3;
-color: white;
-text-decoration: none;
-transition: 0.3s;
-}
-
-.banner-text a:hover {
-opacity: 0.9;
-cursor: pointer;
-}
-
-/*Add fade in animations */
-@-webkit-keyframes fadeslide {
-    from { 
-        opacity: 0;
-        margin-top: 3%;
-    }
-
-    to   { 
-        opacity: 1;
-        margin-top: none;
-    }
-}
-
-/*Add fade in animations */
-@-webkit-keyframes fade {
-    from { 
-        opacity: 0;
-    }
-
-    to   { 
-        opacity: 1;
-    }
+/* Responsive adjustments */
+@media (max-width: 640px) {
+	blockquote {
+		font-size: 1.25rem;
+	}
+	
+	cite {
+		font-size: 1rem;
+	}
 }

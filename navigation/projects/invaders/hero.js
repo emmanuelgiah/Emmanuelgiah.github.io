@@ -1,36 +1,39 @@
-function hero(posx) {
-	this.size = 30;
-	//colors
-	var r = 25;
-	var g = 150;
-	var b = 255;
-	//position
-	this.x2 = windowWidth/2 - this.size;
-	this.x1 = this.x2 - this.size;
-	this.x3 = this.x2 + this.size;
-
-	this.y1 = height-25;
-	this.y2 = this.y1 - this.size;
-	this.y3 = this.y1;
-
-	//slow
-	this.friction = 0.8;
-
-	this.move = function(d) {
-		var dir = d;
-		if (dir > 0) {
-			this.x1 += dir;
-			this.x2 += dir;
-			this.x3 += dir;
-		} else {
-			this.x1 += dir;
-			this.x2 += dir;
-			this.x3 += dir;
-		}
+// Hero class for Space Invaders
+class Hero {
+	constructor() {
+		this.size = 30;
+		this.color = { r: 25, g: 150, b: 255 };
+		
+		// Position
+		this.x2 = windowWidth / 2 - this.size;
+		this.x1 = this.x2 - this.size;
+		this.x3 = this.x2 + this.size;
+		
+		this.y1 = height - 25;
+		this.y2 = this.y1 - this.size;
+		this.y3 = this.y1;
 	}
 
-	this.draw = function() {
-		fill(r, g, b);
-		triangle(this.x1, this.y1, this.x2, this.y2, this.x3,this.y3);
+	move(velocity) {
+		this.x1 += velocity;
+		this.x2 += velocity;
+		this.x3 += velocity;
+	}
+
+	draw() {
+		fill(this.color.r, this.color.g, this.color.b);
+		stroke(255);
+		strokeWeight(3);
+		triangle(this.x1, this.y1, this.x2, this.y2, this.x3, this.y3);
+	}
+
+	updatePosition(canvasWidth, canvasHeight) {
+		this.x2 = canvasWidth / 2 - this.size;
+		this.x1 = this.x2 - this.size;
+		this.x3 = this.x2 + this.size;
+		
+		this.y1 = canvasHeight - 25;
+		this.y2 = this.y1 - this.size;
+		this.y3 = this.y1;
 	}
 }

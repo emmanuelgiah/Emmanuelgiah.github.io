@@ -1,48 +1,79 @@
-const link1 = "https://gist.githubusercontent.com/nasrulhazim/54b659e43b1035215cd0ba1d4577ee80/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json"
+// WSDM - Wisdom Quote App - Refactored
+const QUOTE_API_URL = "https://gist.githubusercontent.com/nasrulhazim/54b659e43b1035215cd0ba1d4577ee80/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json";
+const QUOTE_REFRESH_INTERVAL = 6000;
+const MAX_QUOTE_WORDS = 20;
 
-var quotes = [];
-//generate random number in range
-function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
+let quotes = [];
+
+// Initialize app
+async function init() {
+	try {
+		await fetchQuotes();
+		displayRandomQuote();
+		setInterval(displayRandomQuote, QUOTE_REFRESH_INTERVAL);
+	} catch (error) {
+		console.error('Failed to initialize WSDM:', error);
+		displayError();
+	}
 }
 
-//pull a random quote from the array
-function changeQuote() {
-    let index = getRandomInt(quotes.length);
-    //reset
-    document.getElementById("quotePlaceHolder").innerHTML = "";
-    document.getElementById("authorPlaceHolder").innerHTML = "";
-    //change
-    document.getElementById("quotePlaceHolder").innerHTML = `"${quotes[index].getQuote()}"`;
-    document.getElementById("authorPlaceHolder").innerHTML = quotes[index].getAuthor();
-    //modify the link
-    let wiki = "https://en.wikipedia.org/wiki/" + quotes[index].getAuthor();
-    document.getElementById("authorQuery").setAttribute("href", wiki);
+// Fetch quotes from API
+async function fetchQuotes() {
+	try {
+		const response = await fetch(QUOTE_API_URL);
+		if (!response.ok) throw new Error('Failed to fetch quotes');
+		
+		const data = await response.json();
+		quotes = data.quotes
+			.filter(item => isQuoteValid(item.quote))
+			.map(item => new Quote(item.quote, item.author));
+		
+		if (quotes.length === 0) {
+			throw new Error('No valid quotes found');
+		}
+	} catch (error) {
+		console.error('Error fetching quotes:', error);
+		throw error;
+	}
 }
 
-//quote formatting 
-function quoteFilter(quote) {
-    var quoteLength = quote.split(" ").length;
-    if (quoteLength <= 20)  {
-        return true;
-    }
-    return false;
+// Validate quote length
+function isQuoteValid(quoteText) {
+	const wordCount = quoteText.split(' ').length;
+	return wordCount <= MAX_QUOTE_WORDS;
 }
 
-//getting the quotes from the first source 
-function getQuote() {
-    $.getJSON(link1, function( data ) {
-        let json = $.each(data, function(key, val) {});
-        temp = json.quotes;
-        //format json as objects
-        for (var i = 0; i < temp.length; i++) {
-            if (quoteFilter(temp[i].quote)) {
-                quotes.push(new Quote(temp[i].quote, temp[i].author));
-            }
-        }
-        changeQuote();
-    });
+// Display random quote
+function displayRandomQuote() {
+	if (quotes.length === 0) return;
+	
+	const randomIndex = Math.floor(Math.random() * quotes.length);
+	const selectedQuote = quotes[randomIndex];
+	
+	updateDOM(selectedQuote);
 }
 
-getQuote()
-setInterval(getQuote, 6000);
+// Update DOM elements
+function updateDOM(quote) {
+	const quoteElement = document.getElementById('quotePlaceHolder');
+	const authorElement = document.getElementById('authorPlaceHolder');
+	const linkElement = document.getElementById('authorQuery');
+	
+	if (quoteElement) quoteElement.textContent = `"${quote.getQuote()}"`;
+	if (authorElement) authorElement.textContent = `— ${quote.getAuthor()}`;
+	if (linkElement) {
+		const wikiUrl = `https://en.wikipedia.org/wiki/${encodeURIComponent(quote.getAuthor())}`;
+		linkElement.setAttribute('href', wikiUrl);
+	}
+}
+
+// Display error message
+function displayError() {
+	const quoteElement = document.getElementById('quotePlaceHolder');
+	if (quoteElement) {
+		quoteElement.textContent = 'Unable to load quotes. Please refresh the page.';
+	}
+}
+
+// Start the app
+init();

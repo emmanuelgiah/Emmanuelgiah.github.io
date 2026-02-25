@@ -1,9 +1,14 @@
+/* Pong Game Styles */
+
 html {
 	height: 100%;
 }
 
 body {
-	background-color: #256;
-	background-size: cover;
-	background-repeat: no-repeat;
+	background: #000;
+}
+
+canvas {
+	border-radius: 4px;
+	box-shadow: 0 0 0 3px #000;
 }

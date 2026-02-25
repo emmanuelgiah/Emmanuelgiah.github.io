@@ -1,20 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<link rel="icon" href="../../assets/logo.svg">
-	<title>Auto-Walk.</title>
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script type="text/javascript" src="walker.js"></script>
-	<script type="text/javascript" src="p5/p5.min.js"></script>
-	<script type="text/javascript" src="p5/addons/p5.dom.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="icon" href="../../assets/logo.svg">
+	<title>Random Walker</title>
+	
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400&display=swap" rel="stylesheet">
+	
+	<!-- Styles -->
+	<link rel="stylesheet" href="../../../styles/main.css">
+	<link rel="stylesheet" href="../../../styles/games.css">
+	<link rel="stylesheet" href="styles.css">
+	
+	<!-- p5.js -->
+	<script src="p5/p5.min.js"></script>
+	<script src="p5/addons/p5.dom.min.js"></script>
+	
+	<!-- Game Script -->
+	<script src="walker.js"></script>
+	
 	<style>
 		body {
-			-webkit-font-smoothing: antialiased;
-    		-moz-osx-font-smoothing: grayscale;
+			overflow: hidden;
+			height: 100vh;
+		}
+		
+		.back-nav {
+			position: absolute;
+			top: 1rem;
+			left: 1rem;
+			z-index: 10;
 		}
 	</style>
 </head>
-<body>
+<body class="walker-game">
+	<nav class="back-nav banner-text">
+		<a href="../../projects.html">&lt;&nbsp;Projects</a>
+	</nav>
 </body>
 </html>

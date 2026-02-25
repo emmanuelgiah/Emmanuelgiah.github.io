@@ -1,0 +1,78 @@
+/* ===================================
+   GAME CANVAS STYLES
+   =================================== */
+
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+/* Pong Game */
+.pong-game body {
+    background-color: #256;
+}
+
+/* Invaders Game */
+.invaders-game body {
+    background: linear-gradient(to bottom right, rgb(200, 25, 10), rgb(10, 50, 100));
+}
+
+/* Circular Motion */
+.circular-motion body {
+    background: rgb(105, 105, 105);
+}
+
+/* Random Walker */
+.walker-game body {
+    background: #000;
+}
+
+.walker-controls {
+    opacity: 0.1;
+    transition: opacity 1s ease;
+    position: fixed;
+    bottom: 5%;
+    right: 1%;
+}
+
+.walker-controls:hover {
+    opacity: 0.3;
+    cursor: pointer;
+}
+
+/* ===================================
+   CANVAS RESPONSIVE
+   =================================== */
+
+canvas {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* ===================================
+   GAME UI ELEMENTS
+   =================================== */
+
+.game-score {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 1.5rem;
+    font-family: 'Heebo', monospace;
+    z-index: 100;
+}
+
+.game-instructions {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    text-align: center;
+}

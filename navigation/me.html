@@ -1,41 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<link rel="icon" href="../navigation/assets/logo.svg">
-	<title>About Me.</title>
-	<!-- Include Bootstrap Styles / Fonts / Styles -->
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="../strap3.3.7/css/bootstrap.min.css">
-	<link href="https://fonts.googleapis.com/css?family=Heebo:100" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="styles/navigationstyles.css">
-	<!--Include Font-->
+	<meta name="author" content="Emmanuel Giah">
+	<link rel="icon" href="../navigation/assets/logo.svg">
+	<title>About Me - Emmanuel Giah</title>
+	
+	<!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100&family=Nanum+Myeongjo:wght@400;700;800&family=Work+Sans:ital,wght@0,100;0,200;0,400;1,100&family=Yantramanav:wght@100;300;400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <h3 class="text-md banner-text">
-        <a href="../index.html">  &lt;/Home </a> 
-    </h3>
-	<!-- <img src="../aboutme-min.jpeg"> -->
-	<section class="block mt-12">
-		<div class="block sm:flex about-me-container px-24">
-			<div class="about-me-container-text max-w-4xl ml-0 sm:ml-24 text-left sm:text-center">
-				<h1 class="text-md opacity-50"> <em> Objective </em> </h1>
-				<h3 class="text-md" style="line-height: 1.5;"> 
-					I have obtained a Bachelor's of Science in Computer Science and a Certificate in Information Assurance from The University of Texas at Dallas. 
-                                        
-                                        <br><br> My short-term academic goal is to attend a leading graduate program where I can specialize in data science and earn a Master’s degree in Computer Science. 
+	<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400&display=swap" rel="stylesheet">
 	
-					<br><br>My long-term career goal is to develop software solutions to advance cloud computing and finance with the aim of making a meaningful impact on the world.
-				</h3>
-			</div>
-
-                        <div class="about-me-container-image ml-0 sm:ml-24">
-                                <img src="../aboutme-min.jpeg" alt="About Me Image" class="right-aligned-image">
-                        </div>
-		</div>
-	</section>
+	<!-- Styles -->
+	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../styles/main.css">
+</head>
+<body style="overflow-y: auto;">
+	<div style="min-height: 100vh; display: flex; flex-direction: column;">
+		<nav class="banner-text" style="position: absolute; top: 3rem; left: 3rem; z-index: 10;">
+			<a href="../index.html">&lt;&nbsp;Home</a>
+		</nav>
+		
+		<main class="flex items-center justify-center flex-1 p-4 py-32">
+			<section class="about-me-container w-full px-8 sm:px-20 lg:px-40 flex-col sm:flex-row" style="max-width: 1400px; margin-top: 4rem;">
+				<article class="about-me-container-text mb-8 sm:mb-0 flex-1">
+					<h1 class="text-2xl sm:text-3xl opacity-50 mb-4">
+						<em>Objective</em>
+					</h1>
+					<div class="text-base sm:text-lg leading-relaxed space-y-4">
+						<p>
+							I earned a Bachelor of Science in Computer Science and a Certificate in Information 
+							Assurance from The University of Texas at Dallas, where I developed a strong foundation 
+							in software engineering and security principles.
+						</p>
+						<p>
+							Looking ahead, I'm excited to pursue a Master's degree in Data Science at a leading 
+							graduate program. I'm passionate about leveraging data-driven insights to solve complex 
+							problems and create meaningful impact.
+						</p>
+						<p>
+							My long-term vision is to develop innovative software solutions that advance cloud 
+							computing and healthcare technology. I believe technology has the power to transform 
+							lives, and I'm committed to building systems that make a real difference in the world.
+						</p>
+					</div>
+				</article>
+				
+				<aside class="about-me-container-image flex-shrink-0">
+					<img src="assets/IMG_0880.jpg" alt="Emmanuel Giah" class="right-aligned-image">
+				</aside>
+			</section>
+		</main>
+	</div>
 </body>
 </html>

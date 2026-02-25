@@ -1,23 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<link rel="icon" href="../../assets/logo.svg">
-	<title>Orbital-Hover.</title>
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script type="text/javascript" src="p5/p5.js"></script>
-	<script type="text/javascript" src="p5/addons/p5.dom.js"></script>
-	<script type="text/javascript" src="cm.js"></script>
-	<script type="text/javascript" src="particle.js"></script>
-<!-- 	<script type="text/javascript" src="trace.js"></script> -->
-	<style type="text/css">
+	<link rel="icon" href="../../assets/logo.svg">
+	<title>Orbital Hover</title>
+	
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400&display=swap" rel="stylesheet">
+	
+	<!-- Styles -->
+	<link rel="stylesheet" href="../../../styles/main.css">
+	<link rel="stylesheet" href="../../../styles/games.css">
+	
+	<!-- p5.js -->
+	<script src="p5/p5.js"></script>
+	<script src="p5/addons/p5.dom.js"></script>
+	
+	<!-- Game Scripts -->
+	<script src="particle.js"></script>
+	<script src="cm.js"></script>
+	
+	<style>
 		body {
-			-webkit-font-smoothing: antialiased;
-    		-moz-osx-font-smoothing: grayscale;
 			background: rgb(105, 105, 105);
+			overflow: hidden;
+			height: 100vh;
+		}
+		
+		.back-nav {
+			position: absolute;
+			top: 1rem;
+			left: 1rem;
+			z-index: 10;
 		}
 	</style>
 </head>
-<body>
-
+<body class="circular-motion">
+	<nav class="back-nav banner-text">
+		<a href="../../projects.html">&lt;&nbsp;Projects</a>
+	</nav>
 </body>
 </html>

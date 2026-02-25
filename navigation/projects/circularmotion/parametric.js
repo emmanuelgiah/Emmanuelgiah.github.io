@@ -25,11 +25,13 @@ function setup() {
 	y1 = 0;
 	y2 = 0;
 
-	inside1 = Math.random() * 20;
-	scale1 = (Math.random() * 150) + 50;
+	// Increased range for more variation (higher standard deviation)
+	// Raised floor from 0 to minimum values to avoid short/fast lines
+	inside1 = (Math.random() * 30) + 10;  // Range: 10-40 (was 0-20)
+	scale1 = (Math.random() * 200) + 100; // Range: 100-300 (was 50-200)
 
-	inside2 = Math.random() * 20;
-	scale2 = (Math.random() * 150) + 50;
+	inside2 = (Math.random() * 30) + 10;  // Range: 10-40 (was 0-20)
+	scale2 = (Math.random() * 200) + 100; // Range: 100-300 (was 50-200)
 
 	r = rcolorScale;
 	g = gcolorScale;
