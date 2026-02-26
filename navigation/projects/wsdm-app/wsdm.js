@@ -1,11 +1,11 @@
 // WSDM - Wisdom Quote App - Refactored
 const QUOTE_API_URL_1 = "https://gist.githubusercontent.com/nasrulhazim/54b659e43b1035215cd0ba1d4577ee80/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json";
 const QUOTE_API_URL_2 = "https://raw.githubusercontent.com/AtaGowani/daily-motivation/refs/heads/master/src/data/quotes.json";
-const QUOTE_REFRESH_INTERVAL = 6000;
+const QUOTE_REFRESH_INTERVAL = 11000; // 11 seconds (was 6 seconds)
 const MAX_QUOTE_WORDS = 30;
 
 let quotes = [];
-let isFirstLoad = true;
+let isFirstLoad = true; // No longer needed but keeping for potential future use
 
 // Initialize app
 async function init() {
@@ -16,23 +16,31 @@ async function init() {
 		await fetchQuotes();
 		displayRandomQuote();
 		setInterval(displayRandomQuote, QUOTE_REFRESH_INTERVAL);
+		
+		// Perpetual color fade: trigger new color every 6 seconds
+		// With 8-second transition, it never fully settles before next color starts
+		setInterval(() => {
+			const color = generateMutedColor();
+			setBackgroundColor(color.r, color.g, color.b);
+		}, 6000);
 	} catch (error) {
 		console.error('Failed to initialize WSDM:', error);
 		displayError();
 	}
 }
 
-// Generate muted random background color (brightened by 25%)
+// Generate muted random background color (brightened by 25% + expanded by 3%)
 function generateMutedColor() {
-	const r = Math.floor(Math.random() * 40) + 20;  // 20-60 (was 5-25)
-	const g = Math.floor(Math.random() * 30) + 15;  // 15-45 (was 5-20)
-	const b = Math.floor(Math.random() * 50) + 30;  // 30-80 (was 10-40)
+	const r = Math.floor(Math.random() * 45) + 20;  // 20-65 (was 20-60)
+	const g = Math.floor(Math.random() * 35) + 15;  // 15-50 (was 15-45)
+	const b = Math.floor(Math.random() * 55) + 30;  // 30-85 (was 30-80)
 	return { r, g, b };
 }
 
 // Set background color with smooth transition
 function setBackgroundColor(r, g, b) {
-	document.body.style.transition = 'background-color 1s ease';
+	// 4-second transition for smooth, visible color changes
+	document.body.style.transition = 'background-color 4s ease-in-out';
 	document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 }
 
@@ -97,13 +105,6 @@ function displayRandomQuote() {
 	const selectedQuote = quotes[randomIndex];
 	
 	updateDOM(selectedQuote);
-	
-	// Generate new muted background for each quote (except first load)
-	if (!isFirstLoad) {
-		const color = generateMutedColor();
-		setBackgroundColor(color.r, color.g, color.b);
-	}
-	isFirstLoad = false;
 }
 
 // Update DOM elements
