@@ -1,7 +1,8 @@
 // WSDM - Wisdom Quote App - Refactored
-const QUOTE_API_URL = "https://gist.githubusercontent.com/nasrulhazim/54b659e43b1035215cd0ba1d4577ee80/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json";
+const QUOTE_API_URL_1 = "https://gist.githubusercontent.com/nasrulhazim/54b659e43b1035215cd0ba1d4577ee80/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json";
+const QUOTE_API_URL_2 = "https://raw.githubusercontent.com/AtaGowani/daily-motivation/refs/heads/master/src/data/quotes.json";
 const QUOTE_REFRESH_INTERVAL = 6000;
-const MAX_QUOTE_WORDS = 20;
+const MAX_QUOTE_WORDS = 30;
 
 let quotes = [];
 let isFirstLoad = true;
@@ -35,20 +36,47 @@ function setBackgroundColor(r, g, b) {
 	document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 }
 
-// Fetch quotes from API
+// Fetch quotes from both APIs and combine
 async function fetchQuotes() {
 	try {
-		const response = await fetch(QUOTE_API_URL);
-		if (!response.ok) throw new Error('Failed to fetch quotes');
+		// Fetch from both sources
+		const [response1, response2] = await Promise.all([
+			fetch(QUOTE_API_URL_1),
+			fetch(QUOTE_API_URL_2)
+		]);
 		
-		const data = await response.json();
-		quotes = data.quotes
-			.filter(item => isQuoteValid(item.quote))
-			.map(item => new Quote(item.quote, item.author));
+		if (!response1.ok || !response2.ok) throw new Error('Failed to fetch quotes');
+		
+		const data1 = await response1.json();
+		const data2 = await response2.json();
+		
+		// Extract quotes from both sources (different structures)
+		const quotes1 = data1.quotes || [];
+		const quotes2 = data2 || [];
+		
+		// Combine all quotes
+		const allQuotes = [...quotes1, ...quotes2];
+		
+		// Remove duplicates based on quote text (case-insensitive)
+		const uniqueQuotes = [];
+		const seenQuotes = new Set();
+		
+		for (const item of allQuotes) {
+			const quoteText = item.quote.toLowerCase().trim();
+			if (!seenQuotes.has(quoteText) && isQuoteValid(item.quote)) {
+				seenQuotes.add(quoteText);
+				uniqueQuotes.push(item);
+			}
+		}
+		
+		// Map to Quote objects
+		quotes = uniqueQuotes.map(item => new Quote(item.quote, item.author));
 		
 		if (quotes.length === 0) {
 			throw new Error('No valid quotes found');
 		}
+		
+		console.log(`Loaded ${quotes.length} unique quotes`);
 	} catch (error) {
 		console.error('Error fetching quotes:', error);
 		throw error;
