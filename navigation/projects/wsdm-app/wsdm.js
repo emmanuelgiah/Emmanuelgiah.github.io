@@ -21,11 +21,11 @@ async function init() {
 	}
 }
 
-// Generate muted random background color
+// Generate muted random background color (brightened by 25%)
 function generateMutedColor() {
-	const r = Math.floor(Math.random() * 20) + 5;  // 5-25
-	const g = Math.floor(Math.random() * 15) + 5;  // 5-20
-	const b = Math.floor(Math.random() * 30) + 10; // 10-40
+	const r = Math.floor(Math.random() * 40) + 20;  // 20-60 (was 5-25)
+	const g = Math.floor(Math.random() * 30) + 15;  // 15-45 (was 5-20)
+	const b = Math.floor(Math.random() * 50) + 30;  // 30-80 (was 10-40)
 	return { r, g, b };
 }
 
